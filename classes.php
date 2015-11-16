@@ -5,6 +5,10 @@ class telco {
 	public $Nombre;
 	public $Tipo;
 
+	public $GSMResponse = "";
+	public $UMTSResponse = "";
+	public $LTEResponse = "";
+
 	public $GSM1900 = "FALSE";
 	public $GSM1900Roaming = "FALSE";
 	public $GSM1900RoamingTelco;
