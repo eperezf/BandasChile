@@ -9,10 +9,12 @@ $telco->SetInfo($_GET["telco"]);
 $telco->GetBands2G();
 $telco->GetBands3G();
 $telco->GetBands4G();
+$telco->SetResponses();
 
 $fono->SetFono($_GET["fono"]);
 
 $NombreCompleto = $fono->Marca . " " . $fono->Modelo . " " . $fono->Variante;
+
 
 
 ?>
@@ -52,8 +54,69 @@ $NombreCompleto = $fono->Marca . " " . $fono->Modelo . " " . $fono->Variante;
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1><small>¿Funcionará el</small> <?php echo $NombreCompleto ?> <small>en la operadora</small> <?php echo $telco->Nombre ?><small>?</small></h1>
+      <h1><p class="text-center"><small>¿Funcionará el</small> <?php echo $NombreCompleto ?> <small>en la operadora</small> <?php echo $telco->Nombre ?><small>?</small></p></h1>
     <div>
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-md-4">
+              <p><img src="http://placehold.it/600x800" class="img-responsive"></p>
+              <h3><p class="text-center"><?php echo $NombreCompleto ?></p></h3>
+            </div>
+            <div class="col-md-4">
+              <div class="panel-group">
+                <div class="panel panel-success">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#2G"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Compatible con 2G</a>
+                    </h4>
+                  </div>
+                  <div id="2G" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p><?php echo $telco->Nombre ?> funciona en la(s) frecuencias:</p>
+                      <p><?php echo $telco->GSMResponse ?></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-group">
+                <div class="panel panel-success">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#3G"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Compatible con 3G</a>
+                    </h4>
+                  </div>
+                  <div id="3G" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p><?php echo $telco->Nombre ?> funciona en la(s) frecuencias:</p>
+                      <p><?php echo $telco->UMTSResponse ?></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-group">
+                <div class="panel panel-success">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#4G"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Compatible con 4G</a>
+                    </h4>
+                  </div>
+                  <div id="4G" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p><?php echo $telco->Nombre ?> funciona en la(s) frecuencias:</p>
+                      <p><?php echo $telco->LTEResponse ?></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              OPERADORA
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 </body>

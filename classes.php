@@ -265,6 +265,125 @@ class telco {
 			return "No hay un nombre seteado";
 		}
 	}
+
+	public function SetResponses(){
+		if ($this->GSM1900 == "TRUE"){
+		  $this->GSMResponse = $this->GSMResponse . "<p>1900MHz.";
+		  if ($this->GSM1900Roaming == "TRUE"){
+		    $this->GSMResponse = $this->GSMResponse . " (Roaming en " . $this->GSM1900RoamingTelco . ")</p>";
+		  }
+		  else {
+		    $this->GSMResponse = $this->GSMResponse . "</p>";
+		  }
+		}
+		else {  
+		};
+		if ($this->GSM900 == "TRUE"){
+		  $this->GSMResponse = $this->GSMResponse . "<p>900MHz.";
+		  if ($this->GSM900Roaming == "TRUE"){
+		    $this->GSMResponse = $this->GSMResponse . " (Roaming en " . $this->GSM900RoamingTelco . ")</p>";
+		  }
+		  else {
+		    $this->GSMResponse = $this->GSMResponse . "</p>";
+		  }
+		}
+		else {  
+		};
+		if ($this->GSM850 == "TRUE"){
+		  $this->GSMResponse = $this->GSMResponse . "<p>850MHz.";
+		  if ($this->GSM850Roaming == "TRUE"){
+		    $this->GSMResponse = $this->GSMResponse . " (Roaming en " . $this->GSM850RoamingTelco . ")</p>";
+		  }
+		  else {
+		    $this->GSMResponse = $this->GSMResponse . "</p>";
+		  }
+		}
+		else {  
+		};
+		if ($this->UMTS1900 == "TRUE"){
+		  $this->UMTSResponse = $this->UMTSResponse . "<p>1900MHz.";
+		  if ($this->UMTS1900Roaming == "TRUE"){
+		    $this->UMTSResponse = $this->UMTSResponse . " (Roaming en " . $this->UMTS1900RoamingTelco . ")</p>";
+		  }
+		  else {
+		    $this->UMTSResponse = $this->UMTSResponse . "</p>";
+		  }
+		}
+		else {  
+		};
+		if ($this->UMTS900 == "TRUE"){
+		  $this->UMTSResponse = $this->UMTSResponse . "<p>900MHz.";
+		  if ($this->UMTS900Roaming == "TRUE"){
+		    $this->UMTSResponse = $this->UMTSResponse . " (Roaming en " . $this->UMTS900RoamingTelco . ")</p>";
+		  }
+		  else {
+		    $this->UMTSResponse = $this->UMTSResponse . "</p>";
+		  }
+		}
+		else {  
+		};
+		if ($this->UMTS850 == "TRUE"){
+		  $this->UMTSResponse = $this->UMTSResponse . "<p>850MHz.";
+		  if ($this->UMTS850Roaming == "TRUE"){
+		    $this->UMTSResponse = $this->UMTSResponse . " (Roaming en " . $this->UMTS850RoamingTelco . ")</p>";
+		  }
+		  else {
+		    $this->UMTSResponse = $this->UMTSResponse . "</p>";
+		  }
+		}
+		else {  
+		};
+		if ($this->UMTSAWS == "TRUE"){
+		  $this->UMTSResponse = $this->UMTSResponse . "<p>1700/2100MHz. (AWS)";
+		  if ($this->UMTSAWSRoaming == "TRUE"){
+		    $this->UMTSResponse = $this->UMTSResponse . " (Roaming en " . $this->UMTSAWSRoamingTelco . ")</p>";
+		  }
+		  else {
+		    $this->UMTSResponse = $this->UMTSResponse . "</p>";
+		  }
+		}
+		else {  
+		};
+		if ($this->LTE2600 == "TRUE"){
+		  $this->LTEResponse = $this->LTEResponse . "<p>2600MHz.";
+		  if ($this->LTE2600Roaming == "TRUE"){
+		    $this->LTEResponse = $this->LTEResponse . " (Roaming en " . $this->LTE2600RoamingTelco . ")</p>";
+		  }
+		  else {
+		    $this->LTEResponse = $this->LTEResponse . "</p>";
+		  }
+		}
+		else {  
+		};
+		if ($this->LTE700 == "TRUE"){
+		  $this->LTEResponse = $this->LTEResponse . "<p>700MHz.";
+		  if ($this->LTE700Roaming == "TRUE"){
+		    $this->LTEResponse = $this->LTEResponse . " (Roaming en " . $this->LTE700RoamingTelco . ")</p>";
+		  }
+		  else {
+		    $this->LTEResponse = $this->LTEResponse . "</p>";
+		  }
+		}
+		else {  
+		};
+		if ($this->LTEAWS == "TRUE"){
+		  $this->LTEResponse = $this->LTEResponse . "<p>1700/2100MHz. (AWS)";
+		  if ($this->LTEAWSRoaming == "TRUE"){
+		    $this->LTEResponse = $this->LTEResponse . " (Roaming en " . $this->LTEAWSRoamingTelco . ")</p>";
+		  }
+		  else {
+		    $this->LTEResponse = $this->LTEResponse . "</p>";
+		  }
+		}
+		else {  
+		};
+		if (isset($this->LTEResponse)){
+
+		}
+		else {
+			$this->LTEResponse ="<p>" . $this->Nombre . " no opera en 4G LTE</p>";
+		};
+	}
 }
 
 class telefono {
