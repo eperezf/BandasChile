@@ -21,6 +21,7 @@ $NombreCompleto = $fono->Marca . " " . $fono->Modelo . " " . $fono->Variante;
 
 <html>
 <head>
+  <meta charset="UTF-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
