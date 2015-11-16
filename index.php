@@ -1,3 +1,11 @@
+<?php
+
+include ('config.php');
+$query = "SELECT `Nombre` FROM `Operadoras`";
+$result = mysqli_query($conn, $query);
+
+
+?>
 <html>
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -52,11 +60,11 @@
 				<div class="col-md-12 col-lg-6">
 					<h4><p class="text-center">Selecciona tu operadora</p></h4>
 					<select class="form-control" id="telco" name="telco">
-						<option>Entel</option>
-						<option>Movistar</option>
-						<option>Claro</option>
-						<option>WOM</option>
-						<option>Simple</option>
+            <?php 
+              while ($row = mysqli_fetch_array($result)){
+                echo "<option>" . utf8_encode($row["Nombre"]) . "</option>";
+              }
+            ?>
 					</select>
 					<br/>
 					<br/>

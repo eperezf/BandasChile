@@ -1,34 +1,19 @@
 
 <?php
 
-$phone = $_GET["fono"];
-$server = "localhost";
-$user = "root";
-$password = "root";
-$database = "bandas";
-$phoneidentical = "";
-$conn = new mysqli ($server, $user, $password, $database);
+require_once('classes.php');
+$telco = new telco;
+$fono = new telefono;
 
-$identical = "SELECT * FROM `Telefonos` WHERE `Modelo` = '" . $phone . "'";
-$result1=mysqli_query($conn, $identical);
-while($row1=mysqli_fetch_array($result1)){
-  $phoneidentical = $row1["Modelo"];
-};
+$telco->SetInfo($_GET["telco"]);
+$telco->GetBands2G();
+$telco->GetBands3G();
+$telco->GetBands4G();
 
-$similar = "SELECT * FROM `Telefonos` WHERE `Modelo` LIKE '%" . $phone . "%'";
-$result2=mysqli_query($conn, $similar);
-while($row2=mysqli_fetch_array($result2)){
-  $phonesimilar = $row2["Modelo"];
-};
+$fono->SetFono($_GET["fono"]);
 
-if ($phoneidentical == ""){
-  $response = "Modelo idéntico no encontrado";
-  $phoneidentical = "No encontrado";
-}
-else {
-  $response = "Modelo idéntico encontrado";
-  $phonesimilar = "No es necesario";
-};
+$NombreCompleto = $fono->Marca . " " . $fono->Modelo . " " . $fono->Variante;
+
 
 ?>
 
@@ -66,10 +51,9 @@ else {
 <!--Fin Navbar-->
 <div class="container">
   <div class="row">
-    <p>Búsqueda: <?php echo $phone; ?></p>
-    <p><?php echo $response?></p>
-    <p>$phonesimilar = <?php echo $phonesimilar ?></p>
-    <p>$phoneidentical = <?php echo $phoneidentical ?></p>
+    <div class="col-md-12">
+      <h1><small>¿Funcionará el</small> <?php echo $NombreCompleto ?> <small>en la operadora</small> <?php echo $telco->Nombre ?><small>?</small></h1>
+    <div>
   </div>
 </div>
 </body>
