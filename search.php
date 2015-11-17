@@ -2,11 +2,7 @@
 
 $query = $_POST['search'];
 
-$server = "localhost";
-$user = "root";
-$password = "root";
-$database = "bandas";
-$conn = new mysqli ($server, $user, $password, $database);
+include_once('config.php');
 $array = array();
 
 
