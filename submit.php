@@ -28,6 +28,7 @@ $input = new Inputphone;
 $input->GetPOST();
 $input->GetDB($input->NombreCompletoIn);
 $input->DoInsertFono();
+$input->DoInsertBandas();
 
 ?>
 
@@ -50,5 +51,6 @@ $input->DoInsertFono();
 <p>AWS: <?php echo $input->LTEAWSIn ?></p>
 <p>----RESULTADOS----</p>
 <p>Coincidencia en la base de datos: <?php echo $input->Match ?></p>
-<p>Resultado del query de agregación: <?php echo $input->InsertedFonoEnd ?></p>
+<p>Resultado del query de agregación de teléfono: <?php echo $input->InsertedFonoEnd ?></p>
 <p>ID del nuevo teléfono (si existe): <?php echo $input->InsertedFonoID ?></p>
+<p>Resultado de query de agregación de bandas: <?php echo $input->InsertedBandasEnd ?></p>

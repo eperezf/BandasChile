@@ -451,6 +451,8 @@ class Inputphone {
 	public $Result = "";
 	public $InsertedFonoEnd = "Query no realizado";
 	public $InsertedFonoID = "";
+	public $InsertBandasQuery = "";
+	public $InsertedBandasEnd = "";
 
 	function GetPOST(){
 		if (isset($_POST["GSM1900"])){
@@ -553,9 +555,68 @@ class Inputphone {
 		};
 	}
 
-	function DoInsertBands () {
+	function DoInsertBandas () {
 		include('config.php');
-
+		$this->InsertBandasQuery = "INSERT INTO `Telefonos_Bandas` (`idTelefonos`, `idBandas`) VALUES ";
+		if ($this->GSM1900In == "TRUE"){
+			$this->InsertBandasQuery = $this->InsertBandasQuery .  "('" . $this->InsertedFonoID . "', '1'), ";
+		}
+		else {
+		};
+		if ($this->GSM900In == "TRUE"){
+			$this->InsertBandasQuery = $this->InsertBandasQuery .  "('" . $this->InsertedFonoID . "', '2'), ";
+		}
+		else {
+		};
+		if ($this->GSM850In == "TRUE"){
+			$this->InsertBandasQuery = $this->InsertBandasQuery .  "('" . $this->InsertedFonoID . "', '3'), ";
+		}
+		else {
+		};
+		if ($this->UMTS1900In == "TRUE"){
+			$this->InsertBandasQuery = $this->InsertBandasQuery .  "('" . $this->InsertedFonoID . "', '4'), ";
+		}
+		else {
+		};
+		if ($this->UMTS850In == "TRUE"){
+			$this->InsertBandasQuery = $this->InsertBandasQuery .  "('" . $this->InsertedFonoID . "', '5'), ";
+		}
+		else {
+		};
+		if ($this->UMTS900In == "TRUE"){
+			$this->InsertBandasQuery = $this->InsertBandasQuery .  "('" . $this->InsertedFonoID . "', '6'), ";
+		}
+		else {
+		};
+		if ($this->UMTSAWSIn == "TRUE"){
+			$this->InsertBandasQuery = $this->InsertBandasQuery .  "('" . $this->InsertedFonoID . "', '7'), ";
+		}
+		else {
+		};
+		if ($this->LTE2600In == "TRUE"){
+			$this->InsertBandasQuery = $this->InsertBandasQuery .  "('" . $this->InsertedFonoID . "', '8'), ";
+		}
+		else {
+		};
+		if ($this->LTE700In == "TRUE"){
+			$this->InsertBandasQuery = $this->InsertBandasQuery .  "('" . $this->InsertedFonoID . "', '9'), ";
+		}
+		else {
+		};
+		if ($this->LTEAWSIn == "TRUE"){
+			$this->InsertBandasQuery = $this->InsertBandasQuery .  "('" . $this->InsertedFonoID . "', '10'), ";
+		}
+		else {
+		};
+		$this->InsertBandasQuery = substr($this->InsertBandasQuery, 0, -2);
+		
+		$Result = mysqli_query($conn, $this->InsertBandasQuery);
+		if (! $Result){
+				$this->InsertedBandasEnd = "Error agregando bandas." . mysql_error();
+			}
+			else {
+				$this->InsertedBandasEnd = "Bandas agregadas correctamente.";
+			};
 
 	}
 
