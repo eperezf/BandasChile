@@ -64,15 +64,15 @@ require_once('config.php');
 		
 			<div class="form-group">
 				<label for="">Marca</label>
-				<input type="text" class="form-control" id="marca" name="marca" required="required" placeholder="Ej.: Apple">
+				<input type="text" class="form-control" id="Marca" name="Marca" required="required" placeholder="Ej.: Apple">
 			</div>
 			<div class="form-group">
 				<label for="">Modelo</label>
-				<input type="text" class="form-control" id="modelo" name="modelo" required="required" placeholder="Ej.: iPhone 6s Plus">
+				<input type="text" class="form-control" id="Modelo" name="Modelo" required="required" placeholder="Ej.: iPhone 6s Plus">
 			</div>
 			<div class="form-group">
 				<label for="">Variante</label>
-				<input type="text" class="form-control" id="variante" name="variante" required="required" placeholder="Ej.: A1423">
+				<input type="text" class="form-control" id="Variante" name="Variante" required="required" placeholder="Ej.: A1423">
 			</div>
 			<div class="form-group">
 				<label>Bandas 2G:</label>

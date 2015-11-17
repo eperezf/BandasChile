@@ -426,4 +426,139 @@ class telefono {
 	}
 }
 
+class Inputphone {
+	public $MarcaIn = "";
+	public $ModeloIn = "";
+	public $VarianteIn = "";
+	public $GSM1900In = "";
+	public $GSM900In = "";
+	public $GSM850In = "";
+	public $UMTS1900In = "";
+	public $UMTS900In = "";
+	public $UMTS850In = "";
+	public $UMTSAWSIn = "";
+	public $LTE2600In = "";
+	public $LTE700In = "";
+	public $LTEAWSIn = "";
+	public $NombreCompletoIn = "";
+
+	public $MarcaQuery = "";
+	public $ModeloQuery = "";
+	public $VarianteQuery = "";
+	public $NombreCompletoQuery = "";
+
+	public $Match = "FALSE";
+	public $Result = "";
+	public $InsertedFonoEnd = "Query no realizado";
+	public $InsertedFonoID = "";
+
+	function GetPOST(){
+		if (isset($_POST["GSM1900"])){
+			$this->GSM1900In = "TRUE";
+		}
+		else {
+			$this->GSM1900In = "FALSE";
+		};
+		if (isset($_POST["GSM900"])){
+			$this->GSM900In = "TRUE";
+		}
+		else {
+			$this->GSM900In = "FALSE";
+		};
+		if (isset($_POST["GSM850"])){
+			$this->GSM850In = "TRUE";
+		}
+		else {
+			$this->GSM850In = "FALSE";
+		};
+		if (isset($_POST["UMTS1900"])){
+			$this->UMTS1900In = "TRUE";
+		}
+		else {
+			$this->UMTS1900In = "FALSE";
+		};
+		if (isset($_POST["UMTS900"])){
+			$this->UMTS900In = "TRUE";
+		}
+		else {
+			$this->UMTS900In = "FALSE";
+		};
+		if (isset($_POST["UMTS850"])){
+			$this->UMTS850In = "TRUE";
+		}
+		else {
+			$this->UMTS850In = "FALSE";
+		};
+		if (isset($_POST["UMTSAWS"])){
+			$this->UMTSAWSIn = "TRUE";
+		}
+		else {
+			$this->UMTSAWSIn = "FALSE";
+		};
+		if (isset($_POST["LTE2600"])){
+			$this->LTE2600In = "TRUE";
+		}
+		else {
+			$this->LTE2600In = "FALSE";
+		};
+		if (isset($_POST["LTE700"])){
+			$this->LTE700In = "TRUE";
+		}
+		else {
+			$this->LTE700In = "FALSE";
+		};
+		if (isset($_POST["LTEAWS"])){
+			$this->LTEAWSIn = "TRUE";
+		}
+		else {
+			$this->LTEAWSIn = "FALSE";
+		};
+		$this->MarcaIn = $_POST["Marca"];
+		$this->ModeloIn = $_POST["Modelo"];
+		$this->VarianteIn = $_POST["Variante"];
+		$this->NombreCompletoIn = $this->MarcaIn . " " . $this->ModeloIn . " " . $this->VarianteIn;
+
+	}
+
+	function GetDB($SearchArg) {
+		include('config.php');
+		$query = "SELECT * FROM `Telefonos` WHERE `NombreCompleto` = '" . $SearchArg . "'";
+		$result = mysqli_query($conn, $query);
+		while ($row = mysqli_fetch_array($result)){
+			$this->NombreCompletoQuery = $row["NombreCompleto"]; 
+		}
+		if ($this->NombreCompletoQuery == ""){
+			$this->Match = "FALSE";
+		}
+		else {
+			$this->Match = "TRUE";
+		}
+	}
+
+	function DoInsertFono () {
+		include('config.php');
+		if ($this->Match == "TRUE"){
+			$this->Result = "DUPLICATE";
+		}
+		else {
+			$InsertTelefono = "INSERT INTO `Telefonos` (`Marca`, `Modelo`, `Variante`, `NombreCompleto`) VALUES ('" . $this->MarcaIn . "', '" . $this->ModeloIn . "', '" . $this->VarianteIn . "', '" . $this->NombreCompletoIn . "')";
+			$Result = mysqli_query($conn, $InsertTelefono);
+			$this->InsertedFonoID = mysqli_insert_id($conn);
+			if (! $Result){
+				$this->InsertedFonoEnd = "Error agregando teléfono.";
+			}
+			else {
+				$this->InsertedFonoEnd = "Teléfono agregado correctamente";
+			};
+		};
+	}
+
+	function DoInsertBands () {
+		include('config.php');
+
+
+	}
+
+}
+
 ?>
