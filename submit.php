@@ -54,3 +54,5 @@ $input->DoInsertBandas();
 <p>Resultado del query de agregación de teléfono: <?php echo $input->InsertedFonoEnd ?></p>
 <p>ID del nuevo teléfono (si existe): <?php echo $input->InsertedFonoID ?></p>
 <p>Resultado de query de agregación de bandas: <?php echo $input->InsertedBandasEnd ?></p>
+<p>----SISTEMA FINALIZADO. SI HAY ALGUN ERROR, AVISAR DE INMEDIATO----</p>
+<p><a href="add.php">Volver al agregador</p>
