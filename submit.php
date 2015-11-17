@@ -32,6 +32,11 @@ $input->DoInsertBandas();
 
 ?>
 
+<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
 <p>Marca: <?php echo $input->MarcaIn ?></p>
 <p>Modelo: <?php echo $input->ModeloIn ?></p>
 <p>Variante: <?php echo $input->VarianteIn ?></p>
@@ -56,3 +61,5 @@ $input->DoInsertBandas();
 <p>Resultado de query de agregación de bandas: <?php echo $input->InsertedBandasEnd ?></p>
 <p>----SISTEMA FINALIZADO. SI HAY ALGUN ERROR, AVISAR DE INMEDIATO----</p>
 <p><a href="add.php">Volver al agregador</p>
+</body>
+</html>
