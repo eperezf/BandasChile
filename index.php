@@ -77,7 +77,7 @@ $result = mysqli_query($conn, $query);
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Un proyecto</h1><img src="http://pisapapeles.net/blog/wp-content/uploads/2014/09/logopisapapeles-copy.png">
+				<h1>Un proyecto</h1><img src="http://pisapapeles.net/blog/wp-content/uploads/2014/09/logopisapapeles-copy.png" class="img-responsive">
 			</div>
 		</div>
 	</div>
