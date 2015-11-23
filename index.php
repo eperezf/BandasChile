@@ -54,13 +54,13 @@ $result = mysqli_query($conn, $query);
 		<form action="result.php" method="get">
 			<div class="col-md-12 col-lg-6">
 				<h4><p class="text-center">Busca tu teléfono</p></h4>
-				<input class="form-control" type="text" autocomplete="off" placeholder="Ej.: Apple iPhone 6s Plus" id="fono" name="fono">
+				<input class="form-control" type="text" autocomplete="off" placeholder="Ej.: Apple iPhone 6s Plus" id="Telefono" name="Telefono">
 					<br/>
 					<br/>
 				</div>
 				<div class="col-md-12 col-lg-6">
 					<h4><p class="text-center">Selecciona tu operadora</p></h4>
-					<select class="form-control" id="telco" name="telco">
+					<select class="form-control" id="Operadora" name="Operadora">
             <?php 
               while ($row = mysqli_fetch_array($result)){
                 echo "<option>" . utf8_encode($row["Nombre"]) . "</option>";
@@ -82,7 +82,7 @@ $result = mysqli_query($conn, $query);
 		</div>
 	</div>
 	<script type="text/javascript">
-      $("#fono").typeahead({
+      $("#Telefono").typeahead({
       	onSelect: function(item) {
         	console.log(item);
     		},

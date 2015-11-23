@@ -22,13 +22,13 @@ else {
 	die();
 };
 
-require_once('classes.php');
+require_once('classesv2.php');
 
-$input = new Inputphone;
-$input->GetPOST();
-$input->GetDB($input->NombreCompletoIn);
-$input->DoInsertFono();
-$input->DoInsertBandas();
+$telefono = new InputPhone;
+$telefono->GetPOST();
+$telefono->GetDuplicate($telefono->NombreCompleto);
+$telefono->InsertTelefono();
+$telefono->InsertBandas();
 
 ?>
 
@@ -37,28 +37,30 @@ $input->DoInsertBandas();
 	<meta charset="UTF-8">
 </head>
 <body>
-<p>Marca: <?php echo $input->MarcaIn ?></p>
-<p>Modelo: <?php echo $input->ModeloIn ?></p>
-<p>Variante: <?php echo $input->VarianteIn ?></p>
-<p>Nombre Completo: <?php echo $input->NombreCompletoIn ?></p>
+<p>Marca: <?php echo $telefono->Marca ?></p>
+<p>Modelo: <?php echo $telefono->Modelo ?></p>
+<p>Variante: <?php echo $telefono->Variante ?></p>
+<p>Nombre Completo: <?php echo $telefono->NombreCompleto ?></p>
 <p>----Bandas 2G----</p>
-<p>1900MHz.: <?php echo $input->GSM1900In ?></p>
-<p>900MHz.: <?php echo $input->GSM900In ?></p>
-<p>850MHz.: <?php echo $input->GSM850In ?></p>
+<p>1900MHz.: <?php echo $telefono->GSM1900 ?></p>
+<p>900MHz.: <?php echo $telefono->GSM900 ?></p>
+<p>850MHz.: <?php echo $telefono->GSM850 ?></p>
 <p>----Bandas 3G----</p>
-<p>1900MHz.: <?php echo $input->UMTS1900In ?></p>
-<p>900MHz.: <?php echo $input->UMTS900In ?></p>
-<p>850MHz.: <?php echo $input->UMTS850In ?></p>
-<p>AWS: <?php echo $input->UMTSAWSIn ?></p>
+<p>1900MHz.: <?php echo $telefono->UMTS1900 ?></p>
+<p>900MHz.: <?php echo $telefono->UMTS900 ?></p>
+<p>850MHz.: <?php echo $telefono->UMTS850 ?></p>
+<p>AWS: <?php echo $telefono->UMTSAWS ?></p>
 <p>----Bandas 4G:----</p>
-<p>2600MHz.: <?php echo $input->LTE2600In ?></p>
-<p>700MHz.: <?php echo $input->LTE700In ?></p>
-<p>AWS: <?php echo $input->LTEAWSIn ?></p>
+<p>2600MHz.: <?php echo $telefono->LTE2600 ?></p>
+<p>700MHz.: <?php echo $telefono->LTE700 ?></p>
+<p>AWS: <?php echo $telefono->LTEAWS ?></p>
 <p>----RESULTADOS----</p>
-<p>Coincidencia en la base de datos: <?php echo $input->Match ?></p>
-<p>Resultado del query de agregación de teléfono: <?php echo $input->InsertedFonoEnd ?></p>
-<p>ID del nuevo teléfono (si existe): <?php echo $input->InsertedFonoID ?></p>
-<p>Resultado de query de agregación de bandas: <?php echo $input->InsertedBandasEnd ?></p>
+<p>Coincidencia en la base de datos: <?php echo $telefono->DuplicateMatch ?></p>
+<p>Estado del agregador de teléfono: <?php echo $telefono->InsertTelefonoResult ?></p>
+<p>Respuesta del agregador de teléfono: <?php echo $telefono->InsertTelefonoResponse ?></p>
+<p>ID del teléfono agregado (Si se realizó): <?php echo $telefono->InsertTelefonoID ?></p>
+<p>Estado del agregador de bandas: <?php echo $telefono->InsertBandasResult ?></p>
+<p>Respuesta del agregador de bandas: <?php echo $telefono->InsertBandasResponse ?></p>
 <p>----SISTEMA FINALIZADO. SI HAY ALGUN ERROR, AVISAR DE INMEDIATO----</p>
 <p><a href="add.php">Volver al agregador</p>
 </body>
