@@ -18,6 +18,200 @@ $LTE2600 = $Comparacion->ProcessBand($Operadora->LTE2600, $Telefono->LTE2600, "L
 $LTE700 = $Comparacion->ProcessBand($Operadora->LTE700, $Telefono->LTE700, "LTE700");
 $LTEAWS = $Comparacion->ProcessBand($Operadora->LTEAWS, $Telefono->LTEAWS, "LTEAWS");
 
+$Comparacion->ProcessResult();
+
+$OKIcon = '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> ';
+$WarningIcon = '<span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> ';
+$DangerIcon = '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> ';
+
+if ($Comparacion->GSMResult == "OK"){
+  $GSMBoxText = $OKIcon . "100% Compatible con 2G";
+  $GSMBoxType = "success";
+}
+if ($Comparacion->GSMResult == "PARTIAL"){
+  $GSMBoxText = $WarningIcon . "Parcialmente compatible con 2G";
+  $GSMBoxType = "warning";
+}
+if ($Comparacion->GSMResult == "ERROR"){
+  $GSMBoxText = $DangerIcon . "No compatible con 2G";
+  $GSMBoxType = "danger";
+}
+
+if ($Comparacion->UMTSResult == "OK"){
+  $UMTSBoxText = $OKIcon . "100% Compatible con 3G";
+  $UMTSBoxType = "success";
+}
+if ($Comparacion->UMTSResult == "PARTIAL"){
+  $UMTSBoxText = $WarningIcon . "Parcialmente compatible con 3G";
+  $UMTSBoxType = "warning";
+}
+if ($Comparacion->UMTSResult == "ERROR"){
+  $UMTSBoxText = $DangerIcon . "No compatible con 3G";
+  $UMTSBoxType = "danger";
+}
+
+if ($Comparacion->LTEResult == "OK"){
+  $LTEBoxText = $OKIcon . "100% Compatible con 4G";
+  $LTEBoxType = "success";
+}
+if ($Comparacion->LTEResult == "PARTIAL"){
+  $LTEBoxText = $WarningIcon . "Parcialmente compatible con 4G";
+  $LTEBoxType = "warning";
+}
+if ($Comparacion->LTEResult == "ERROR"){
+  $LTEBoxText = $DangerIcon . "No compatible con 4G";
+  $LTEBoxType = "danger";
+}
+
+if ($Operadora->GSM1900 == "TRUE"){
+  if ($Comparacion->GSM1900Result == "OK"){
+    $GSMList = $GSMList . "<p>" . $OKIcon;
+  }
+  else {
+    $GSMList = $GSMList . "<p>" . $DangerIcon;
+  }
+  if ($Operadora->GSM1900Roaming == "TRUE"){
+    $GSMList = $GSMList . '1900MHz. (Roaming en ' . $Operadora->GSM1900RoamingOperadora . ')</p>';
+  }
+  else {
+    $GSMList = $GSMList . '1900MHz.</p>';
+  }
+}
+
+if ($Operadora->GSM900 == "TRUE"){
+  if ($Comparacion->GSM900Result == "OK"){
+    $GSMList = $GSMList . "<p>" . $OKIcon;
+  }
+  else {
+    $GSMList = $GSMList . "<p>" . $DangerIcon;
+  }
+  if ($Operadora->GSM900Roaming == "TRUE"){
+    $GSMList = $GSMList . '900MHz. (Roaming en ' . $Operadora->GSM900RoamingOperadora . ')</p>';
+  }
+  else {
+    $GSMList = $GSMList . '900MHz.</p>';
+  }
+}
+
+if ($Operadora->GSM850 == "TRUE"){
+  if ($Comparacion->GSM850Result == "OK"){
+    $GSMList = $GSMList . "<p>" . $OKIcon;
+  }
+  else {
+    $GSMList = $GSMList . "<p>" . $DangerIcon;
+  }
+  if ($Operadora->GSM850Roaming == "TRUE"){
+    $GSMList = $GSMList . '850MHz. (Roaming en ' . $Operadora->GSM850RoamingOperadora . ')</p>';
+  }
+  else {
+    $GSMList = $GSMList . '850MHz.</p>';
+  }
+}
+
+if ($Operadora->UMTS1900 == "TRUE"){
+  if ($Comparacion->UMTS1900Result == "OK"){
+    $UMTSList = $UMTSList . "<p>" . $OKIcon;
+  }
+  else {
+    $UMTSList = $UMTSList . "<p>" . $DangerIcon;
+  }
+  if ($Operadora->UMTS1900Roaming == "TRUE"){
+    $UMTSList = $UMTSList . '1900MHz. (Roaming en ' . $Operadora->UMTS1900RoamingOperadora . ')</p>';
+  }
+  else {
+    $UMTSList = $UMTSList . '1900MHz.</p>';
+  }
+}
+
+if ($Operadora->UMTS900 == "TRUE"){
+  if ($Comparacion->UMTS900Result == "OK"){
+    $UMTSList = $UMTSList . "<p>" . $OKIcon;
+  }
+  else {
+    $UMTSList = $UMTSList . "<p>" . $DangerIcon;
+  }
+  if ($Operadora->UMTS900Roaming == "TRUE"){
+    $UMTSList = $UMTSList . '900MHz. (Roaming en ' . $Operadora->UMTS900RoamingOperadora . ')</p>';
+  }
+  else {
+    $UMTSList = $UMTSList . '900MHz.</p>';
+  }
+}
+
+if ($Operadora->UMTS850 == "TRUE"){
+  if ($Comparacion->UMTS850Result == "OK"){
+    $UMTSList = $UMTSList . "<p>" . $OKIcon;
+  }
+  else {
+    $UMTSList = $UMTSList . "<p>" . $DangerIcon;
+  }
+  if ($Operadora->UMTS850Roaming == "TRUE"){
+    $UMTSList = $UMTSList . '850MHz. (Roaming en ' . $Operadora->UMTS850RoamingOperadora . ')</p>';
+  }
+  else {
+    $UMTSList = $UMTSList . '850MHz.</p>';
+  }
+}
+
+if ($Operadora->UMTSAWS == "TRUE"){
+  if ($Comparacion->UMTSAWSResult == "OK"){
+    $UMTSList = $UMTSList . "<p>" . $OKIcon;
+  }
+  else {
+    $UMTSList = $UMTSList . "<p>" . $DangerIcon;
+  }
+  if ($Operadora->UMTSAWSRoaming == "TRUE"){
+    $UMTSList = $UMTSList . '1700/2100MHz. (AWS) (Roaming en ' . $Operadora->UMTSAWSRoamingOperadora . ')</p>';
+  }
+  else {
+    $UMTSList = $UMTSList . '1700/2100MHz. (AWS)</p>';
+  }
+}
+
+if ($Operadora->LTE2600 == "TRUE"){
+  if ($Comparacion->LTE2600Result == "OK"){
+    $LTEList = $LTEList . "<p>" . $OKIcon;
+  }
+  else {
+    $LTEList = $LTEList . "<p>" . $DangerIcon;
+  }
+  if ($Operadora->LTE2600Roaming == "TRUE"){
+    $LTEList = $LTEList . '2600MHz. (Roaming en ' . $Operadora->LTE2600RoamingOperadora . ')</p>';
+  }
+  else {
+    $LTEList = $LTEList . '2600MHz.</p>';
+  }
+}
+
+if ($Operadora->LTE700 == "TRUE"){
+  if ($Comparacion->LTE700Result == "OK"){
+    $LTEList = $LTEList . "<p>" . $OKIcon;
+  }
+  else {
+    $LTEList = $LTEList . "<p>" . $DangerIcon;
+  }
+  if ($Operadora->LTE700Roaming == "TRUE"){
+    $LTEList = $LTEList . '700MHz. (Roaming en ' . $Operadora->LTE700RoamingOperadora . ')</p>';
+  }
+  else {
+    $LTEList = $LTEList . '700MHz.</p>';
+  }
+}
+
+if ($Operadora->LTEAWS == "TRUE"){
+  if ($Comparacion->LTEAWSResult == "OK"){
+    $LTEList = $LTEList . "<p>" . $OKIcon;
+  }
+  else {
+    $LTEList = $LTEList . "<p>" . $DangerIcon;
+  }
+  if ($Operadora->LTEAWSRoaming == "TRUE"){
+    $LTEList = $LTEList . '1700/2100MHz. (AWS) (Roaming en ' . $Operadora->LTEAWSRoamingOperadora . ')</p>';
+  }
+  else {
+    $LTEList = $LTEList . '1700/2100MHz. (AWS)</p>';
+  }
+}
 
 
 ?>
@@ -65,69 +259,57 @@ $LTEAWS = $Comparacion->ProcessBand($Operadora->LTEAWS, $Telefono->LTEAWS, "LTEA
           <div class="panel-body">
             <div class="col-md-4">
               <p><img src="http://placehold.it/600x800" class="img-responsive"></p>
-              <h3><p class="text-center">TELEFONO</p></h3>
+              <h3><p class="text-center"><?php echo $Telefono->NombreCompleto ?></p></h3>
             </div>
             <div class="col-md-4">
               <div class="panel-group">
-                <div class="panel panel-success">
+                <div class="panel panel-<?php echo $GSMBoxType ?>">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#2G"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Compatible con 2G</a>
+                      <a data-toggle="collapse" href="#2G"><?php echo $GSMBoxText ?></a>
                     </h4>
                   </div>
                   <div id="2G" class="panel-collapse collapse">
                     <div class="panel-body">
-                      <p>OPERADORA funciona en la(s) frecuencias:</p>
-                      <p>FRECUENCIAS GSM</p>
+                      <p><?php echo $Operadora->Nombre ?> funciona en la(s) frecuencias:</p>
+                      <?php echo $GSMList ?>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="panel-group">
-                <div class="panel panel-success">
+                <div class="panel panel-<?php echo $UMTSBoxType ?>">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#3G"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Compatible con 3G</a>
+                      <a data-toggle="collapse" href="#3G"><?php echo $UMTSBoxText ?></a>
                     </h4>
                   </div>
                   <div id="3G" class="panel-collapse collapse">
                     <div class="panel-body">
-                      <p>OPERADORA funciona en la(s) frecuencias:</p>
-                      <p>FRECUENCIAS UMTS</p>
+                      <p><?php echo $Operadora->Nombre ?> funciona en la(s) frecuencias:</p>
+                      <?php echo $UMTSList ?>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="panel-group">
-                <div class="panel panel-success">
+                <div class="panel panel-<?php echo $LTEBoxType ?>">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#4G"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Compatible con 4G</a>
+                      <a data-toggle="collapse" href="#4G"><?php echo $LTEBoxText ?></a>
                     </h4>
                   </div>
                   <div id="4G" class="panel-collapse collapse">
                     <div class="panel-body">
-                      <p>OPERADORA funciona en la(s) frecuencias:</p>
-                      <p>FRECUENCIAS LTE</p>
+                      <p><?php echo $Operadora->Nombre ?> funciona en la(s) frecuencias:</p>
+                      <?php echo $LTEList ?>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-md-4">
-              <p>RESULTADOS 2G:</p>
-              <p><?php echo $GSM1900 ?></p>
-              <p><?php echo $GSM900 ?></p>
-              <p><?php echo $GSM850 ?></p>
-              <p>RESULTADOS 3G:</p>
-              <p><?php echo $UMTS1900 ?></p>
-              <p><?php echo $UMTS900 ?></p>
-              <p><?php echo $UMTS850 ?></p>
-              <p><?php echo $UMTSAWS ?></p>
-              <p>RESULTADOS 4G:</p>
-              <p><?php echo $LTE2600 ?></p>
-              <p><?php echo $LTE700 ?></p>
-              <p><?php echo $LTEAWS ?></p>
+              DATOS DE LA OPERADORA
             </div>
           </div>
         </div>
