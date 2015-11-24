@@ -6,6 +6,10 @@ $Operadora = new Operadora($_GET["Operadora"]);
 $Telefono = new Telefono($_GET["Telefono"]);
 $Comparacion = new Comparacion;
 
+$GSMList = "";
+$UMTSList = "";
+$LTEList = "";
+
 $Operadora->GetBandas();
 $GSM1900 = $Comparacion->ProcessBand($Operadora->GSM1900, $Telefono->GSM1900, "GSM1900");
 $GSM900 = $Comparacion->ProcessBand($Operadora->GSM900, $Telefono->GSM900, "GSM900");
