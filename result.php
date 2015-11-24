@@ -216,7 +216,11 @@ if ($Operadora->LTEAWS == "TRUE"){
     $LTEList = $LTEList . '1700/2100MHz. (AWS)</p>';
   }
 }
-
+if ($LTEList == ""){
+  $LTEList = "<p>" . $WarningIcon . $Operadora->Nombre . " no opera en 4G</p>";
+  $LTEBoxText = $DangerIcon . $Operadora->Nombre . " no opera en 4G";
+  $LTEBoxType = "danger";
+}
 
 ?>
 
