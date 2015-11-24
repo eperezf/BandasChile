@@ -317,7 +317,7 @@ if ($LTEList == ""){
               </div>
             </div>
             <div class="col-md-4">
-              DATOS DE LA OPERADORA
+              <img src="img/<?php echo $Operadora->Nombre ?>.png" class="img-responsive center-block">
             </div>
           </div>
         </div>
