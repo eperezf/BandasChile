@@ -317,7 +317,7 @@ if ($LTEList == ""){
               </div>
             </div>
             <div class="col-md-4">
-              <img src="img/<?php echo $Operadora->Nombre ?>.png" class="img-responsive center-block">
+              <img src="img/<?php echo str_replace(" ", "_", $Operadora->Nombre) ?>.png" class="img-responsive center-block" alt="<?php echo $Operadora->Nombre ?>">
             </div>
           </div>
         </div>
