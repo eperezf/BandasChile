@@ -1,3 +1,9 @@
+<?php 
+session_start();
+$_SESSION["login"] = "FALSE";
+
+?>
+
 <html>
 <head>
   <meta charset="UTF-8">

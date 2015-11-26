@@ -1,25 +1,25 @@
 <?php 
 session_start();
 
-if (isset($_POST["user"])){
-	if ($_POST["user"] == "admin" || $_POST["inputPass"] == "PPB##1029"){
-		$_SESSION["login"] = "TRUE";
-	}	
+
+if ($_SESSION["login"] == "TRUE"){
+	//El usuario ya tiene autenticado.
 }
 else {
-	if (isset($_SESSION["login"])){
-		if (isset($_POST["inputPass"]) && $_POST["inputPass"] == "PPB##1029"){
-			header("Location: /login.php");
+	if (isset($_POST["user"]) && isset($_POST["inputPass"])){
+		if ($_POST["user"] == "admin" && $_POST["inputPass"] == "PPB##1029"){
+			$_SESSION["login"] = "TRUE";
 		}
-		else {			
+		else {
+			$_SESSION["login"] = "FALSE";
+			header("Location: /login.php");
 		}
 	}
 	else {
 		header("Location: /login.php");
+		$_SESSION["login"] = "FALSE";
 	}
 }
-
-
 
 require_once('config.php');
 

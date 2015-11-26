@@ -77,7 +77,8 @@ $result = mysqli_query($conn, $query);
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Un proyecto</h1><img src="http://pisapapeles.net/blog/wp-content/uploads/2014/09/logopisapapeles-copy.png" class="img-responsive">
+				<p><h1>Un proyecto</h1><img src="http://pisapapeles.net/blog/wp-content/uploads/2014/09/logopisapapeles-copy.png" class="img-responsive"></p>
+        <p><a href="http://www.beyondsecurity.com/vulnerability-scanner-verification/190.161.222.153"><img src="https://seal.beyondsecurity.com/verification-images/190.161.222.153/vulnerability-scanner-2.gif" alt="Website Security Test" border="0" /></a></p>
 			</div>
 		</div>
 	</div>

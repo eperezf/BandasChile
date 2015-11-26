@@ -1,4 +1,3 @@
-
 <?php
 
 require_once('classesv2.php');
@@ -220,6 +219,31 @@ if ($LTEList == ""){
   $LTEList = "<p>" . $WarningIcon . $Operadora->Nombre . " no opera en 4G</p>";
   $LTEBoxText = $DangerIcon . $Operadora->Nombre . " no opera en 4G";
   $LTEBoxType = "danger";
+}
+
+if ($_GET["Telefono"] == ""){
+  header("Location: /");
+  die;
+}
+
+if (!isset($Telefono->Marca)){
+  header("Location: /");
+  die;
+}
+
+if ($Telefono->Marca == ""){
+  header("Location: /");
+  die;
+}
+
+if ($Operadora->Nombre == ""){
+  header("Location: /");
+  die;
+}
+
+if ($_GET["Operadora"] == ""){
+  header("Location: /");
+  die;
 }
 
 ?>
