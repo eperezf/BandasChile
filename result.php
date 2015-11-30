@@ -1,5 +1,11 @@
 <?php
 
+if (!isset($_GET["Operadora"])){
+  $_SESSION["Alert"] = "Por favor selecciona una operadora";
+  header("Location: /");
+  die;
+}
+
 session_start();
 
 require_once('classesv2.php');
