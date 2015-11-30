@@ -306,187 +306,190 @@ class Operadora {
 		include('config.php');
 
 		//GSM
-		$query = "SELECT * FROM `Operadoras`, `Bandas`, `Operadoras_Bandas` WHERE `Bandas`.`Tipo`='2G' and `Operadoras_Bandas`.`idOperadoras` =" . $this->ID . " AND `Operadoras`.`idOperadoras` =" . $this->ID . " AND `Bandas`.`idBandas` = `Operadoras_Bandas`.`idBandas`";
-		$result = mysqli_query($conn, $query);
-		while ($row = mysqli_fetch_array($result)){
-			if ($row["Frecuencia"] == "1900"){
-				$this->GSM1900 = "TRUE";
-				if ($row["Roaming"] == "1"){
-					$this->GSM1900Roaming = "TRUE";
-					$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
-					$resultRoaming = mysqli_query($conn, $queryRoaming);
-					while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
-						$this->GSM1900RoamingOperadora = $rowRoaming["Nombre"];
-					};
-					$rowRoaming = "";
-					$queryRoaming = "";
-					$resultRoaming = "";
+		if ($_GET["Operadora"] != ""){
+			$query = "SELECT * FROM `Operadoras`, `Bandas`, `Operadoras_Bandas` WHERE `Bandas`.`Tipo`='2G' and `Operadoras_Bandas`.`idOperadoras` =" . $this->ID . " AND `Operadoras`.`idOperadoras` =" . $this->ID . " AND `Bandas`.`idBandas` = `Operadoras_Bandas`.`idBandas`";
+			$result = mysqli_query($conn, $query);
+			while ($row = mysqli_fetch_array($result)){
+				if ($row["Frecuencia"] == "1900"){
+					$this->GSM1900 = "TRUE";
+					if ($row["Roaming"] == "1"){
+						$this->GSM1900Roaming = "TRUE";
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$resultRoaming = mysqli_query($conn, $queryRoaming);
+						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
+							$this->GSM1900RoamingOperadora = $rowRoaming["Nombre"];
+						};
+						$rowRoaming = "";
+						$queryRoaming = "";
+						$resultRoaming = "";
+					}
+					else{
+					}
 				}
-				else{
-				}
-			}
-			elseif($row["Frecuencia"] == "900"){
-				$this->GSM900 = "TRUE";
-				if ($row["Roaming"] == "1"){
-					$this->GSM900Roaming = "TRUE";
-					$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
-					$resultRoaming = mysqli_query($conn, $queryRoaming);
-					while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
-						$this->GSM900RoamingOperadora = $rowRoaming["Nombre"];
-					};
-					$rowRoaming = "";
-					$queryRoaming = "";
-					$resultRoaming = "";
-				}
-				else{						
-				}
-			}
-			elseif($row["Frecuencia"] == "850"){
-				$this->GSM850 = "TRUE";
-				if ($row["Roaming"] == "1"){
-					$this->GSM850Roaming = "TRUE";
-					$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
-					$resultRoaming = mysqli_query($conn, $queryRoaming);
-					while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
-						$this->GSM850RoamingOperadora = $rowRoaming["Nombre"];
-					};
-					$rowRoaming = "";
-					$queryRoaming = "";
-					$resultRoaming = "";
-				}
-				else{						
-				}
-			};
-		}
-		$query = "";
-		$result = "";
-		$row = "";
 
-		//UMTS
-		$query = "SELECT * FROM `Operadoras`, `Bandas`, `Operadoras_Bandas` WHERE `Bandas`.`Tipo`='3G' and `Operadoras_Bandas`.`idOperadoras` =" . $this->ID . " AND `Operadoras`.`idOperadoras` =" . $this->ID . " AND `Bandas`.`idBandas` = `Operadoras_Bandas`.`idBandas`";
-		$result = mysqli_query($conn, $query);
-		while ($row = mysqli_fetch_array($result)){
-			if ($row["Frecuencia"] == "1900"){
-				$this->UMTS1900 = "TRUE";
-				if ($row["Roaming"] == "1"){
-					$this->UMTS1900Roaming = "TRUE";
-					$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
-					$resultRoaming = mysqli_query($conn, $queryRoaming);
-					while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
-						$this->UMTS1900RoamingOperadora = $rowRoaming["Nombre"];
-					};
-					$rowRoaming = "";
-					$queryRoaming = "";
-					$resultRoaming = "";
+				elseif($row["Frecuencia"] == "900"){
+					$this->GSM900 = "TRUE";
+					if ($row["Roaming"] == "1"){
+						$this->GSM900Roaming = "TRUE";
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$resultRoaming = mysqli_query($conn, $queryRoaming);
+						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
+							$this->GSM900RoamingOperadora = $rowRoaming["Nombre"];
+						};
+						$rowRoaming = "";
+						$queryRoaming = "";
+						$resultRoaming = "";
+					}
+					else{						
+					}
 				}
-				else{						
-				}
+				elseif($row["Frecuencia"] == "850"){
+					$this->GSM850 = "TRUE";
+					if ($row["Roaming"] == "1"){
+						$this->GSM850Roaming = "TRUE";
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$resultRoaming = mysqli_query($conn, $queryRoaming);
+						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
+							$this->GSM850RoamingOperadora = $rowRoaming["Nombre"];
+						};
+						$rowRoaming = "";
+						$queryRoaming = "";
+						$resultRoaming = "";
+					}
+					else{						
+					}
+				};
 			}
-			elseif($row["Frecuencia"] == "900"){
-				$this->UMTS900 = "TRUE";
-				if ($row["Roaming"] == "1"){
-					$this->UMTS900Roaming = "TRUE";
-					$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
-					$resultRoaming = mysqli_query($conn, $queryRoaming);
-					while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
-						$this->UMTS900RoamingOperadora = $rowRoaming["Nombre"];
-					};
-					$rowRoaming = "";
-					$queryRoaming = "";
-					$resultRoaming = "";
-				}
-				else{						
-				}
-			}
-			elseif($row["Frecuencia"] == "1700"){
-				$this->UMTSAWS = "TRUE";
-				if ($row["Roaming"] == "1"){
-					$this->UMTSAWSRoaming = "TRUE";
-					$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
-					$resultRoaming = mysqli_query($conn, $queryRoaming);
-					while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
-						$this->UMTSAWSRoamingOperadora = $rowRoaming["Nombre"];
-					};
-					$rowRoaming = "";
-					$queryRoaming = "";
-					$resultRoaming = "";
-				}
-				else{						
-				}
-			}
-			elseif($row["Frecuencia"] == "850"){
-				$this->UMTS850 = "TRUE";
-				if ($row["Roaming"] == "1"){
-					$this->UMTS850Roaming = "TRUE";
-					$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
-					$resultRoaming = mysqli_query($conn, $queryRoaming);
-					while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
-						$this->UMTS850RoamingOperadora = $rowRoaming["Nombre"];
-					};
-					$rowRoaming = "";
-					$queryRoaming = "";
-					$resultRoaming = "";
-				}
-				else{				
-				}
-			};
-		}
-		$query = "";
-		$result = "";
-		$row = "";
+			$query = "";
+			$result = "";
+			$row = "";
 
-		//LTE
-		$query = "SELECT * FROM `Operadoras`, `Bandas`, `Operadoras_Bandas` WHERE `Bandas`.`Tipo`='4G' and `Operadoras_Bandas`.`idOperadoras` =" . $this->ID . " AND `Operadoras`.`idOperadoras` =" . $this->ID . " AND `Bandas`.`idBandas` = `Operadoras_Bandas`.`idBandas`";
-		$result = mysqli_query($conn, $query);
-		while ($row = mysqli_fetch_array($result)){
-			if ($row["Frecuencia"] == "2600"){
-				$this->LTE2600 = "TRUE";
-				if ($row["Roaming"] == "1"){
-					$this->LTE2600Roaming = "TRUE";
-					$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
-					$resultRoaming = mysqli_query($conn, $queryRoaming);
-					while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
-						$this->LTE2600RoamingOperadora = $rowRoaming["Nombre"];
-					};
-					$rowRoaming = "";
-					$queryRoaming = "";
-					$resultRoaming = "";
+			//UMTS
+			$query = "SELECT * FROM `Operadoras`, `Bandas`, `Operadoras_Bandas` WHERE `Bandas`.`Tipo`='3G' and `Operadoras_Bandas`.`idOperadoras` =" . $this->ID . " AND `Operadoras`.`idOperadoras` =" . $this->ID . " AND `Bandas`.`idBandas` = `Operadoras_Bandas`.`idBandas`";
+			$result = mysqli_query($conn, $query);
+			while ($row = mysqli_fetch_array($result)){
+				if ($row["Frecuencia"] == "1900"){
+					$this->UMTS1900 = "TRUE";
+					if ($row["Roaming"] == "1"){
+						$this->UMTS1900Roaming = "TRUE";
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$resultRoaming = mysqli_query($conn, $queryRoaming);
+						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
+							$this->UMTS1900RoamingOperadora = $rowRoaming["Nombre"];
+						};
+						$rowRoaming = "";
+						$queryRoaming = "";
+						$resultRoaming = "";
+					}
+					else{						
+					}
 				}
-				else{	
+				elseif($row["Frecuencia"] == "900"){
+					$this->UMTS900 = "TRUE";
+					if ($row["Roaming"] == "1"){
+						$this->UMTS900Roaming = "TRUE";
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$resultRoaming = mysqli_query($conn, $queryRoaming);
+						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
+							$this->UMTS900RoamingOperadora = $rowRoaming["Nombre"];
+						};
+						$rowRoaming = "";
+						$queryRoaming = "";
+						$resultRoaming = "";
+					}
+					else{						
+					}
 				}
+				elseif($row["Frecuencia"] == "1700"){
+					$this->UMTSAWS = "TRUE";
+					if ($row["Roaming"] == "1"){
+						$this->UMTSAWSRoaming = "TRUE";
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$resultRoaming = mysqli_query($conn, $queryRoaming);
+						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
+							$this->UMTSAWSRoamingOperadora = $rowRoaming["Nombre"];
+						};
+						$rowRoaming = "";
+						$queryRoaming = "";
+						$resultRoaming = "";
+					}
+					else{						
+					}
+				}
+				elseif($row["Frecuencia"] == "850"){
+					$this->UMTS850 = "TRUE";
+					if ($row["Roaming"] == "1"){
+						$this->UMTS850Roaming = "TRUE";
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$resultRoaming = mysqli_query($conn, $queryRoaming);
+						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
+							$this->UMTS850RoamingOperadora = $rowRoaming["Nombre"];
+						};
+						$rowRoaming = "";
+						$queryRoaming = "";
+						$resultRoaming = "";
+					}
+					else{				
+					}
+				};
 			}
-			elseif($row["Frecuencia"] == "700"){
-				$this->LTE700 = "TRUE";
-				if ($row["Roaming"] == "1"){
-					$this->LTE700Roaming = "TRUE";
-					$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
-					$resultRoaming = mysqli_query($conn, $queryRoaming);
-					while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
-						$this->LTE700RoamingOperadora = $rowRoaming["Nombre"];
-					};
-					$rowRoaming = "";
-					$queryRoaming = "";
-					$resultRoaming = "";
+			$query = "";
+			$result = "";
+			$row = "";
+
+			//LTE
+			$query = "SELECT * FROM `Operadoras`, `Bandas`, `Operadoras_Bandas` WHERE `Bandas`.`Tipo`='4G' and `Operadoras_Bandas`.`idOperadoras` =" . $this->ID . " AND `Operadoras`.`idOperadoras` =" . $this->ID . " AND `Bandas`.`idBandas` = `Operadoras_Bandas`.`idBandas`";
+			$result = mysqli_query($conn, $query);
+			while ($row = mysqli_fetch_array($result)){
+				if ($row["Frecuencia"] == "2600"){
+					$this->LTE2600 = "TRUE";
+					if ($row["Roaming"] == "1"){
+						$this->LTE2600Roaming = "TRUE";
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$resultRoaming = mysqli_query($conn, $queryRoaming);
+						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
+							$this->LTE2600RoamingOperadora = $rowRoaming["Nombre"];
+						};
+						$rowRoaming = "";
+						$queryRoaming = "";
+						$resultRoaming = "";
+					}
+					else{	
+					}
 				}
-				else{	
+				elseif($row["Frecuencia"] == "700"){
+					$this->LTE700 = "TRUE";
+					if ($row["Roaming"] == "1"){
+						$this->LTE700Roaming = "TRUE";
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$resultRoaming = mysqli_query($conn, $queryRoaming);
+						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
+							$this->LTE700RoamingOperadora = $rowRoaming["Nombre"];
+						};
+						$rowRoaming = "";
+						$queryRoaming = "";
+						$resultRoaming = "";
+					}
+					else{	
+					}
 				}
+				elseif($row["Frecuencia"] == "1700"){
+					$this->LTEAWS = "TRUE";
+					if ($row["Roaming"] == "1"){
+						$this->LTEAWSRoaming = "TRUE";
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$resultRoaming = mysqli_query($conn, $queryRoaming);
+						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
+							$this->LTEAWSRoamingOperadora = $rowRoaming["Nombre"];
+						};
+						$rowRoaming = "";
+						$queryRoaming = "";
+						$resultRoaming = "";
+					}
+					else{			
+					}
+				};
 			}
-			elseif($row["Frecuencia"] == "1700"){
-				$this->LTEAWS = "TRUE";
-				if ($row["Roaming"] == "1"){
-					$this->LTEAWSRoaming = "TRUE";
-					$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
-					$resultRoaming = mysqli_query($conn, $queryRoaming);
-					while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
-						$this->LTEAWSRoamingOperadora = $rowRoaming["Nombre"];
-					};
-					$rowRoaming = "";
-					$queryRoaming = "";
-					$resultRoaming = "";
-				}
-				else{			
-				}
-			};
 		}
 	}
 }

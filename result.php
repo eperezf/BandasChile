@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once('classesv2.php');
 $Operadora = new Operadora($_GET["Operadora"]);
 $Telefono = new Telefono($_GET["Telefono"]);
@@ -222,26 +224,31 @@ if ($LTEList == ""){
 }
 
 if ($_GET["Telefono"] == ""){
+  $_SESSION["Alert"] = "Por favor busca un teléfono";
   header("Location: /");
   die;
 }
 
 if (!isset($Telefono->Marca)){
+  $_SESSION["Alert"] = "El teléfono que buscaste no existe";
   header("Location: /");
   die;
 }
 
 if ($Telefono->Marca == ""){
+  $_SESSION["Alert"] = "El teléfono que buscaste no existe";
   header("Location: /");
   die;
 }
 
 if ($Operadora->Nombre == ""){
+  $_SESSION["Alert"] = "La operadora no existe";
   header("Location: /");
   die;
 }
 
 if ($_GET["Operadora"] == ""){
+  $_SESSION["Alert"] = "Por favor selecciona una operadora";
   header("Location: /");
   die;
 }
