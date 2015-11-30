@@ -140,7 +140,7 @@ class InputPhone {
 			$this->InsertTelefonoID = "NULL";
 		}
 		else {
-			$InsertTelefono = "INSERT INTO `Telefonos` (`Marca`, `Modelo`, `Variante`, `NombreCompleto`) VALUES ('" . $this->Marca . "', '" . $this->Modelo . "', '" . $this->Variante . "', '" . $this->NombreCompleto . "')";
+			$InsertTelefono = "INSERT INTO `Telefonos` (`Marca`, `Modelo`, `Variante`, `NombreCompleto`) VALUES ('" . pg_escape_string($this->Marca) . "', '" . pg_escape_string($this->Modelo) . "', '" . pg_escape_string($this->Variante) . "', '" . pg_escape_string($this->NombreCompleto) . "')";
 			$Result = mysqli_query($conn, $InsertTelefono);
 			if (! $Result){
 				$this->InsertTelefonoResult = "ERROR";
@@ -292,7 +292,7 @@ class Operadora {
 	function __construct ($Operadora){
 		include('config.php');
 		$Operadora = str_replace("ó", "o", $Operadora); //Hotfix for ó
-		$query = "SELECT * FROM `Operadoras` WHERE `Nombre` = '" . utf8_encode($Operadora) . "'";
+		$query = "SELECT * FROM `Operadoras` WHERE `Nombre` = '" . pg_escape_string(utf8_encode($Operadora)) . "'";
 		$result = mysqli_query($conn, $query);
 		while ($row=mysqli_fetch_array($result)){
 			$this->ID = $row["idOperadoras"];
@@ -307,14 +307,14 @@ class Operadora {
 
 		//GSM
 		if ($_GET["Operadora"] != ""){
-			$query = "SELECT * FROM `Operadoras`, `Bandas`, `Operadoras_Bandas` WHERE `Bandas`.`Tipo`='2G' and `Operadoras_Bandas`.`idOperadoras` =" . $this->ID . " AND `Operadoras`.`idOperadoras` =" . $this->ID . " AND `Bandas`.`idBandas` = `Operadoras_Bandas`.`idBandas`";
+			$query = "SELECT * FROM `Operadoras`, `Bandas`, `Operadoras_Bandas` WHERE `Bandas`.`Tipo`='2G' and `Operadoras_Bandas`.`idOperadoras` =" . pg_escape_string($this->ID) . " AND `Operadoras`.`idOperadoras` =" . pg_escape_string($this->ID) . " AND `Bandas`.`idBandas` = `Operadoras_Bandas`.`idBandas`";
 			$result = mysqli_query($conn, $query);
 			while ($row = mysqli_fetch_array($result)){
 				if ($row["Frecuencia"] == "1900"){
 					$this->GSM1900 = "TRUE";
 					if ($row["Roaming"] == "1"){
 						$this->GSM1900Roaming = "TRUE";
-						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . pg_escape_string($row["idOperadoras_Roaming"]);
 						$resultRoaming = mysqli_query($conn, $queryRoaming);
 						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
 							$this->GSM1900RoamingOperadora = $rowRoaming["Nombre"];
@@ -331,7 +331,7 @@ class Operadora {
 					$this->GSM900 = "TRUE";
 					if ($row["Roaming"] == "1"){
 						$this->GSM900Roaming = "TRUE";
-						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . pg_escape_string($row["idOperadoras_Roaming"]);
 						$resultRoaming = mysqli_query($conn, $queryRoaming);
 						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
 							$this->GSM900RoamingOperadora = $rowRoaming["Nombre"];
@@ -347,7 +347,7 @@ class Operadora {
 					$this->GSM850 = "TRUE";
 					if ($row["Roaming"] == "1"){
 						$this->GSM850Roaming = "TRUE";
-						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . pg_escape_string($row["idOperadoras_Roaming"]);
 						$resultRoaming = mysqli_query($conn, $queryRoaming);
 						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
 							$this->GSM850RoamingOperadora = $rowRoaming["Nombre"];
@@ -365,14 +365,14 @@ class Operadora {
 			$row = "";
 
 			//UMTS
-			$query = "SELECT * FROM `Operadoras`, `Bandas`, `Operadoras_Bandas` WHERE `Bandas`.`Tipo`='3G' and `Operadoras_Bandas`.`idOperadoras` =" . $this->ID . " AND `Operadoras`.`idOperadoras` =" . $this->ID . " AND `Bandas`.`idBandas` = `Operadoras_Bandas`.`idBandas`";
+			$query = "SELECT * FROM `Operadoras`, `Bandas`, `Operadoras_Bandas` WHERE `Bandas`.`Tipo`='3G' and `Operadoras_Bandas`.`idOperadoras` =" . pg_escape_string($this->ID) . " AND `Operadoras`.`idOperadoras` =" . pg_escape_string($this->ID) . " AND `Bandas`.`idBandas` = `Operadoras_Bandas`.`idBandas`";
 			$result = mysqli_query($conn, $query);
 			while ($row = mysqli_fetch_array($result)){
 				if ($row["Frecuencia"] == "1900"){
 					$this->UMTS1900 = "TRUE";
 					if ($row["Roaming"] == "1"){
 						$this->UMTS1900Roaming = "TRUE";
-						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . pg_escape_string($row["idOperadoras_Roaming"]);
 						$resultRoaming = mysqli_query($conn, $queryRoaming);
 						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
 							$this->UMTS1900RoamingOperadora = $rowRoaming["Nombre"];
@@ -388,7 +388,7 @@ class Operadora {
 					$this->UMTS900 = "TRUE";
 					if ($row["Roaming"] == "1"){
 						$this->UMTS900Roaming = "TRUE";
-						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . pg_escape_string($row["idOperadoras_Roaming"]);
 						$resultRoaming = mysqli_query($conn, $queryRoaming);
 						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
 							$this->UMTS900RoamingOperadora = $rowRoaming["Nombre"];
@@ -404,7 +404,7 @@ class Operadora {
 					$this->UMTSAWS = "TRUE";
 					if ($row["Roaming"] == "1"){
 						$this->UMTSAWSRoaming = "TRUE";
-						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . pg_escape_string($row["idOperadoras_Roaming"]);
 						$resultRoaming = mysqli_query($conn, $queryRoaming);
 						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
 							$this->UMTSAWSRoamingOperadora = $rowRoaming["Nombre"];
@@ -420,7 +420,7 @@ class Operadora {
 					$this->UMTS850 = "TRUE";
 					if ($row["Roaming"] == "1"){
 						$this->UMTS850Roaming = "TRUE";
-						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . pg_escape_string($row["idOperadoras_Roaming"]);
 						$resultRoaming = mysqli_query($conn, $queryRoaming);
 						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
 							$this->UMTS850RoamingOperadora = $rowRoaming["Nombre"];
@@ -438,14 +438,14 @@ class Operadora {
 			$row = "";
 
 			//LTE
-			$query = "SELECT * FROM `Operadoras`, `Bandas`, `Operadoras_Bandas` WHERE `Bandas`.`Tipo`='4G' and `Operadoras_Bandas`.`idOperadoras` =" . $this->ID . " AND `Operadoras`.`idOperadoras` =" . $this->ID . " AND `Bandas`.`idBandas` = `Operadoras_Bandas`.`idBandas`";
+			$query = "SELECT * FROM `Operadoras`, `Bandas`, `Operadoras_Bandas` WHERE `Bandas`.`Tipo`='4G' and `Operadoras_Bandas`.`idOperadoras` =" . pg_escape_string($this->ID) . " AND `Operadoras`.`idOperadoras` =" . pg_escape_string($this->ID) . " AND `Bandas`.`idBandas` = `Operadoras_Bandas`.`idBandas`";
 			$result = mysqli_query($conn, $query);
 			while ($row = mysqli_fetch_array($result)){
 				if ($row["Frecuencia"] == "2600"){
 					$this->LTE2600 = "TRUE";
 					if ($row["Roaming"] == "1"){
 						$this->LTE2600Roaming = "TRUE";
-						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . pg_escape_string($row["idOperadoras_Roaming"]);
 						$resultRoaming = mysqli_query($conn, $queryRoaming);
 						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
 							$this->LTE2600RoamingOperadora = $rowRoaming["Nombre"];
@@ -461,7 +461,7 @@ class Operadora {
 					$this->LTE700 = "TRUE";
 					if ($row["Roaming"] == "1"){
 						$this->LTE700Roaming = "TRUE";
-						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . pg_escape_string($row["idOperadoras_Roaming"]);
 						$resultRoaming = mysqli_query($conn, $queryRoaming);
 						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
 							$this->LTE700RoamingOperadora = $rowRoaming["Nombre"];
@@ -477,7 +477,7 @@ class Operadora {
 					$this->LTEAWS = "TRUE";
 					if ($row["Roaming"] == "1"){
 						$this->LTEAWSRoaming = "TRUE";
-						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . $row["idOperadoras_Roaming"];
+						$queryRoaming = "SELECT `Nombre` FROM Operadoras WHERE idOperadoras =" . pg_escape_string($row["idOperadoras_Roaming"]);
 						$resultRoaming = mysqli_query($conn, $queryRoaming);
 						while ($rowRoaming = mysqli_fetch_array($resultRoaming)){
 							$this->LTEAWSRoamingOperadora = $rowRoaming["Nombre"];
@@ -528,7 +528,7 @@ class Telefono {
 
 	function __construct ($NameInput){
 		include('config.php');
-		$query = "SELECT * FROM `Telefonos` WHERE `NombreCompleto` = '" . $NameInput . "'";
+		$query = "SELECT * FROM `Telefonos` WHERE `NombreCompleto` = '" . pg_escape_string($NameInput) . "'";
 		$result = mysqli_query($conn, $query);
 		while($row=mysqli_fetch_array($result)){
 			$this->ID = $row ["idTelefonos"];
@@ -543,7 +543,7 @@ class Telefono {
 		if ($this->Marca == ""){
 			$this->Identical = "FALSE";
 			$this->Similar = "TRUE";
-			$query = "SELECT * FROM `Telefonos` WHERE `NombreCompleto` LIKE '%" . $NameInput . "%'";
+			$query = "SELECT * FROM `Telefonos` WHERE `NombreCompleto` LIKE '%" . pg_escape_string($NameInput) . "%'";
 			$result = mysqli_query($conn, $query);
 			while($row=mysqli_fetch_array($result)){
 				$this->ID = $row ["idTelefonos"];
@@ -558,7 +558,7 @@ class Telefono {
 		$result = "";
 		$row = "";
 
-		$query = "SELECT * FROM `Telefonos_Bandas` WHERE `idTelefonos` = '" . $this->ID . "'";
+		$query = "SELECT * FROM `Telefonos_Bandas` WHERE `idTelefonos` = '" . pg_escape_string($this->ID) . "'";
 		$result = mysqli_query ($conn, $query);
 		while ($row = mysqli_fetch_array($result)){
 			if ($row["idBandas"] == "1"){
