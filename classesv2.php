@@ -116,6 +116,7 @@ class InputPhone {
 	//Función para saber si hay un duplicado en la base de datos BEGIN
 	function GetDuplicate($Telefono) {
 		include('config.php');
+		$conn->set_charset("utf8");
 		$NombreCompletoQuery = "";
 		$query = "SELECT * FROM `Telefonos` WHERE `NombreCompleto` = '" . $Telefono . "'";
 		$result = mysqli_query($conn, $query);
@@ -134,6 +135,7 @@ class InputPhone {
 	//Función para insertar el teléfono en la base de datos si no hay duplicado BEGIN
 	function InsertTelefono () {
 		include('config.php');
+		$conn->set_charset("utf8");
 		if ($this->DuplicateMatch == "TRUE"){
 			$this->InsertTelefonoResult = "DUPLICATE";
 			$this->InsertTelefonoResponse = "El teléfono ingresado ya existe. Sus datos no se agregarán.";
@@ -158,6 +160,7 @@ class InputPhone {
 
 	//Función para isertar las bandas del teléfono BEGIN
 	function InsertBandas () {
+		$conn->set_charset("utf8");
 		if ($this->DuplicateMatch == "TRUE"){
 			$this->InsertBandasResult = "DUPLICATE";
 			$this->InsertBandasResponse = "El teléfono ingresado ya existe. Sus bandas no se agregarán.";
@@ -291,6 +294,7 @@ class Operadora {
 	//Función para obtener los datos de la operadora consultada
 	function __construct ($Operadora){
 		include('config.php');
+		$conn->set_charset("utf8");
 		$Operadora = str_replace("ó", "o", $Operadora); //Hotfix for ó
 		$query = "SELECT * FROM `Operadoras` WHERE `Nombre` = '" . mysqli_real_escape_string($conn, utf8_encode($Operadora)) . "'";
 		$result = mysqli_query($conn, $query);
@@ -304,6 +308,7 @@ class Operadora {
 	//Función para obtener las bandas y roeaming de estas si existen
 	function GetBandas (){
 		include('config.php');
+		$conn->set_charset("utf8");
 
 		//GSM
 		if ($_GET["Operadora"] != ""){
@@ -528,6 +533,7 @@ class Telefono {
 
 	function __construct ($NameInput){
 		include('config.php');
+		$conn->set_charset("utf8");
 		$query = "SELECT * FROM `Telefonos` WHERE `NombreCompleto` = '" . mysqli_real_escape_string($conn, $NameInput) . "'";
 		$result = mysqli_query($conn, $query);
 		while($row=mysqli_fetch_array($result)){
@@ -620,6 +626,7 @@ class Comparacion {
 	public $LTEResult;
 
 	function ProcessBand ($OperadoraInput, $TelefonoInput, $BandaInput){
+		
 		if ($BandaInput == "GSM1900"){
 			if ($OperadoraInput == "TRUE" && $TelefonoInput == "TRUE"){
 				$this->GSM1900Result = "OK";
