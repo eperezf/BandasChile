@@ -13,11 +13,13 @@ else {
 		else {
 			$_SESSION["login"] = "FALSE";
 			header("Location: /login.php");
+			die();
 		}
 	}
 	else {
-		header("Location: /login.php");
 		$_SESSION["login"] = "FALSE";
+		header("Location: /login.php");
+		die();
 	}
 }
 
