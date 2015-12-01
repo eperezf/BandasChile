@@ -73,7 +73,7 @@ $result = mysqli_query($conn, $query);
 					<select class="form-control" id="Operadora" name="Operadora">
             <?php 
               while ($row = mysqli_fetch_array($result)){
-                echo "<option>" . utf8_encode($row["Nombre"]) . "</option>";
+                echo "<option>" . $row["Nombre"] . "</option>";
               }
             ?>
 					</select>
