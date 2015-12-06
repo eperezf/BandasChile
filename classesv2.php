@@ -300,7 +300,7 @@ class Operadora {
 		$result = mysqli_query($conn, $query);
 		while ($row=mysqli_fetch_array($result)){
 			$this->ID = $row["idOperadoras"];
-			$this->Nombre = utf8_encode($row["Nombre"]);
+			$this->Nombre = $row["Nombre"];
 			$this->Tipo = $row["Tipo"];
 		};
 	}
