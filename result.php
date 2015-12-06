@@ -354,7 +354,7 @@ if ($_GET["Operadora"] == ""){
               </div>
             </div>
             <div class="col-md-4">
-              <img src="img/<?php echo str_replace(" ", "_", $Operadora->Nombre) ?>.png" class="img-responsive center-block" alt="<?php echo $Operadora->Nombre ?>">
+              <img src="img/<?php echo str_replace(" ", "_", $Operadora->Nombre) ?>.png" class="img-responsive center-block" alt="<?php echo $Operadora->Nombre ?>" style="max-height: 150px;">
             </div>
           </div>
         </div>
