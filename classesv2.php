@@ -245,9 +245,9 @@ class InputPhone {
 class Operadora {
 
 	//Datos generales de la operadora
-	public $ID;
-	public $Nombre;
-	public $Tipo;
+	public $ID="";
+	public $Nombre="";
+	public $Tipo="";
 
 	//Datos de las bandas de la operadora
 	//GSM 1900
@@ -291,12 +291,13 @@ class Operadora {
 	public $LTEAWSRoaming = "FALSE";
 	public $LTEAWSRoamingOperadora;
 
+
 	//Función para obtener los datos de la operadora consultada
 	function __construct ($Operadora){
 		include('config.php');
 		$conn->set_charset("utf8");
-		$Operadora = str_replace("ó", "o", $Operadora); //Hotfix for ó
-		$query = "SELECT * FROM `Operadoras` WHERE `Nombre` = '" . mysqli_real_escape_string($conn, utf8_encode($Operadora)) . "'";
+		//$Operadora = utf8_encode(str_replace("ó", "o", $Operadora)); //Hotfix for ó
+		$query = "SELECT * FROM `Operadoras` WHERE `Nombre` = '" . mysqli_real_escape_string($conn, $Operadora) . "'";
 		$result = mysqli_query($conn, $query);
 		while ($row=mysqli_fetch_array($result)){
 			$this->ID = $row["idOperadoras"];
@@ -311,7 +312,7 @@ class Operadora {
 		$conn->set_charset("utf8");
 
 		//GSM
-		if ($_GET["Operadora"] != ""){
+		if ($this->ID != ""){
 			$query = "SELECT * FROM `Operadoras`, `Bandas`, `Operadoras_Bandas` WHERE `Bandas`.`Tipo`='2G' and `Operadoras_Bandas`.`idOperadoras` =" . mysqli_real_escape_string($conn, $this->ID) . " AND `Operadoras`.`idOperadoras` =" . mysqli_real_escape_string($conn, $this->ID) . " AND `Bandas`.`idBandas` = `Operadoras_Bandas`.`idBandas`";
 			$result = mysqli_query($conn, $query);
 			while ($row = mysqli_fetch_array($result)){

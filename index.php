@@ -81,7 +81,7 @@ $result = mysqli_query($conn, $query);
 					<br/>
 				</div>
 				<div class="col-md-12 col-lg-12">
-					<button type="submit" class="btn btn-success center-block">Comparar</button>
+					<button type="submit" class="btn btn-success center-block">Verificar</button>
 				</div>
 			</form>
 		</div>
