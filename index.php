@@ -87,8 +87,9 @@ $result = mysqli_query($conn, $query);
 			</form>
 		</div>
 		<div class="row">
+      <hr></hr>
 			<div class="col-md-12">
-				<p><h1>Un proyecto</h1><img src="http://pisapapeles.net/blog/wp-content/uploads/2014/09/logopisapapeles-copy.png" class="img-responsive"></p>
+				<h2><p class="text-center">Un proyecto</h2><img src="http://pisapapeles.net/blog/wp-content/uploads/2014/09/logopisapapeles-copy.png" class="img-responsive center-block"></p>
 			</div>
 		</div>
 	</div>
