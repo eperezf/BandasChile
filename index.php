@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-
 include ('config.php');
 $query = "SELECT `Nombre` FROM `Operadoras`";
 $result = mysqli_query($conn, $query);
@@ -23,6 +22,7 @@ $result = mysqli_query($conn, $query);
 	<link rel="stylesheet" href="css/theme.min.css">
 </head>
 <body>
+<?php include_once("analyticstracking.php") ?>
 <!--Inicio Navbar-->
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">

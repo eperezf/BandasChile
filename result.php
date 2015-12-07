@@ -274,6 +274,7 @@ if ($_GET["Operadora"] == ""){
 	<link rel="stylesheet" href="css/theme.min.css">
 </head>
 <body>
+<?php include_once("analyticstracking.php") ?>
 <!--Inicio Navbar-->
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
