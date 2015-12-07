@@ -307,6 +307,7 @@ if ($_GET["Operadora"] == ""){
             <div class="col-md-4">
               <p><img src="http://placehold.it/600x800" class="img-responsive"></p>
               <h3><p class="text-center"><?php echo $Telefono->NombreCompleto ?></p></h3>
+              <?php if ($Telefono->LinkReview != ""){echo '<h3><p class="text-center"><a href="http://pisapapeles.net/' . $Telefono->LinkReview . '">Leer review</a></p></h3>';}; ?>
             </div>
             <div class="col-md-4">
               <div class="panel-group">
