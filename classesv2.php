@@ -15,6 +15,7 @@ class InputPhone {
 	public $Marca = "";
 	public $Modelo = "";
 	public $Variante = "";
+	public $LinkReview = "";
 	public $GSM1900 = "";
 	public $GSM900 = "";
 	public $GSM850 = "";
@@ -110,6 +111,7 @@ class InputPhone {
 		$this->Modelo = $_POST["Modelo"];
 		$this->Variante = $_POST["Variante"];
 		$this->NombreCompleto = $this->Marca . " " . $this->Modelo . " " . $this->Variante;
+		$this->LinkReview = $_POST["Review"];
 
 	}
 
@@ -142,7 +144,7 @@ class InputPhone {
 			$this->InsertTelefonoID = "NULL";
 		}
 		else {
-			$InsertTelefono = "INSERT INTO `Telefonos` (`Marca`, `Modelo`, `Variante`, `NombreCompleto`) VALUES ('" . mysqli_real_escape_string($conn, $this->Marca) . "', '" . mysqli_real_escape_string($conn, $this->Modelo) . "', '" . mysqli_real_escape_string($conn, $this->Variante) . "', '" . mysqli_real_escape_string($conn, $this->NombreCompleto) . "')";
+			$InsertTelefono = "INSERT INTO `Telefonos` (`Marca`, `Modelo`, `Variante`, `NombreCompleto`, `LinkReview`) VALUES ('" . mysqli_real_escape_string($conn, $this->Marca) . "', '" . mysqli_real_escape_string($conn, $this->Modelo) . "', '" . mysqli_real_escape_string($conn, $this->Variante) . "', '" . mysqli_real_escape_string($conn, $this->NombreCompleto) . "', '" . mysqli_real_escape_string($conn, $this->LinkReview) . "')";
 			$Result = mysqli_query($conn, $InsertTelefono);
 			if (! $Result){
 				$this->InsertTelefonoResult = "ERROR";
@@ -160,7 +162,7 @@ class InputPhone {
 
 	//Función para isertar las bandas del teléfono BEGIN
 	function InsertBandas () {
-		$conn->set_charset("utf8");
+		
 		if ($this->DuplicateMatch == "TRUE"){
 			$this->InsertBandasResult = "DUPLICATE";
 			$this->InsertBandasResponse = "El teléfono ingresado ya existe. Sus bandas no se agregarán.";
@@ -168,7 +170,7 @@ class InputPhone {
 		}
 		else {
 			include('config.php');
-			$InsertBandasQuery = "INSERT INTO `Telefonos_Bandas` (`idTelefonos`, `idBandas`) VALUES ";
+			$InsertBandasQuery = "INSERT INTO `telefonos_Bandas` (`idTelefonos`, `idBandas`) VALUES ";
 			if ($this->GSM1900 == "TRUE"){
 				$InsertBandasQuery = $InsertBandasQuery .  "('" . $this->InsertTelefonoID . "', '1'), ";
 			}
@@ -224,7 +226,7 @@ class InputPhone {
 			
 			$Result = mysqli_query($conn, $InsertBandasQuery);
 			if (! $Result){
-					$this->InsertBandasResponse = "Error agregando bandas." . mysql_error();
+					$this->InsertBandasResponse = "Error agregando bandas.";
 					$this->InsertBandasResult = "ERROR";
 			}
 			else {

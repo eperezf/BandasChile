@@ -77,6 +77,10 @@ require_once('config.php');
 				<input type="text" class="form-control" id="Variante" name="Variante" required="required" placeholder="Ej.: A1423">
 			</div>
 			<div class="form-group">
+				<label for="">SLUG (Link sin "http://pisapapeles.net/") del review:</label>
+				<input type="text" class="form-control" id="Review" name="Review" placeholder="Ej.: apple-iphone-6s-review">
+			</div>
+			<div class="form-group">
 				<label>Bandas 2G:</label>
 				<label class="checkbox-inline">
 				  <input type="checkbox" id="GSM1900" name="GSM1900" value="TRUE"> 1900MHz.
