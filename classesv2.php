@@ -170,7 +170,7 @@ class InputPhone {
 		}
 		else {
 			include('config.php');
-			$InsertBandasQuery = "INSERT INTO `telefonos_Bandas` (`idTelefonos`, `idBandas`) VALUES ";
+			$InsertBandasQuery = "INSERT INTO `Telefonos_Bandas` (`idTelefonos`, `idBandas`) VALUES ";
 			if ($this->GSM1900 == "TRUE"){
 				$InsertBandasQuery = $InsertBandasQuery .  "('" . $this->InsertTelefonoID . "', '1'), ";
 			}
@@ -226,7 +226,7 @@ class InputPhone {
 			
 			$Result = mysqli_query($conn, $InsertBandasQuery);
 			if (! $Result){
-					$this->InsertBandasResponse = "Error agregando bandas.";
+					$this->InsertBandasResponse = "Error agregando bandas: " . $InsertBandasQuery;
 					$this->InsertBandasResult = "ERROR";
 			}
 			else {
