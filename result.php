@@ -272,6 +272,12 @@ if ($_GET["Operadora"] == ""){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="stylesheet" href="css/theme.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Titilium+Web' rel='stylesheet' type='text/css'>
+  <style>
+    body {
+      font-family: 'Titilium Web', sans-serif;
+    }
+  </style>
 </head>
 <body>
 <?php include_once("analyticstracking.php") ?>
@@ -299,7 +305,7 @@ if ($_GET["Operadora"] == ""){
   <div class="row">
     <div class="col-md-12">
       <h1><p class="text-center"><small>¿Funcionará el</small> <?php echo $Telefono->NombreCompleto?> <small>en la operadora</small> <?php echo $Operadora->Nombre ?><small>?</small></p></h1>
-    <div>
+    </div>
       <div class="col-md-12">
         <div class="panel panel-default">
           <div class="panel-body">
@@ -364,4 +370,9 @@ if ($_GET["Operadora"] == ""){
     </div>
   </div>
 </div>
+<footer class="footer">
+    <div class="container">
+      <p class="text-muted">Verificador de Bandas <a href="about.php">0.8</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
+    </div>
+  </footer>
 </body>

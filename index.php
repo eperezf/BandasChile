@@ -94,10 +94,15 @@ $result = mysqli_query($conn, $query);
 		<div class="row">
       <hr></hr>
 			<div class="col-md-12">
-				<h2><p class="text-center">Un proyecto</h2><img src="http://pisapapeles.net/blog/wp-content/uploads/2014/09/logopisapapeles-copy.png" class="img-responsive center-block"></p>
+				<h3><p class="text-center">Un proyecto</h3><img src="http://pisapapeles.net/blog/wp-content/uploads/2014/09/logopisapapeles-copy.png" class="img-responsive center-block"></p>
 			</div>
 		</div>
 	</div>
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted">Verificador de Bandas <a href="about.php">0.8</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
+    </div>
+  </footer>
 	<script type="text/javascript">
       $("#Telefono").typeahead({
       	onSelect: function(item) {
