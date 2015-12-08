@@ -20,6 +20,12 @@ $result = mysqli_query($conn, $query);
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<script src="/js/bootstrap-typeahead.min.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="css/theme.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Titilium+Web' rel='stylesheet' type='text/css'>
+  <style>
+    body {
+      font-family: 'Titilium Web', sans-serif;
+    }
+  </style>
 </head>
 <body>
 <?php include_once("analyticstracking.php") ?>
@@ -33,12 +39,11 @@ $result = mysqli_query($conn, $query);
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">Pisapapeles</a>
+      <a class="navbar-brand" href="http://pisapapeles.net">Pisapapeles</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Inicio</a></li>
-        <li><a href="/list.php">Volver al blog</a></li>
+        <li class="active"><a href="#">Bandas</a></li>
       </ul>
     </div>
   </div>
