@@ -53,6 +53,8 @@ require_once('config.php');
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="/">Inicio</a></li>
+        <li><a href="/list.php">Lista</a></li>
+        <li class="active"><a href="#">Agregar</a></li>
         <li><a href="http://pisapapeles.net">Volver al blog</a></li>
       </ul>
     </div>
