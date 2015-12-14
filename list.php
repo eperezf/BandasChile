@@ -91,8 +91,13 @@ $result = mysqli_query($conn, $query);
 						<td><?php echo $row["Marca"] ?></td>
 						<td><?php echo $row["Modelo"] ?></td>
 						<td><?php echo $row["Variante"] ?></td>
-						<td>ELIMINAR</td>
+						<td><button onclick="delete<?php echo $row['idTelefonos']; ?>()">ELIMINAR</button></td>
 					</tr>
+					<script>
+						function delete<?php echo $row['idTelefonos']; ?>() {
+    					confirm("Estás seguro que quieres eliminar el: \n<?php echo $row['NombreCompleto'] ?> \n ID <?php echo $row['idTelefonos'] ?>?");
+						}
+					</script>
 				<?php endwhile; ?>
 		</div>
 	</div>
