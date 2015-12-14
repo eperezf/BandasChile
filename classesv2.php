@@ -607,9 +607,9 @@ class Telefono {
 /**
 * Clase para comparar teléfono y bandas
 * @author Eduardo Pérez
-* @version 1.0
+* @version 1.1
 * @category Processer
-* @todo Terminar el resto de las bandas
+* @todo Nada por ahora
 */
 class Comparacion {
 
@@ -817,9 +817,6 @@ class Comparacion {
 	}
 
 	function ProcessResult (){
-		//If there's an error code, we have a problem somewhere. Let's check if there's a OK to make it partial
-			//If there's an OK, then there's SOME compatibility...
-
 		if ($this->GSM1900Result == "ERROR" || $this->GSM900Result == "ERROR" || $this->GSM850Result == "ERROR"){
 			if ($this->GSM1900Result == "OK" || $this->GSM900Result == "OK" || $this->GSM850Result == "OK"){
 				$this->GSMResult = "PARTIAL";
