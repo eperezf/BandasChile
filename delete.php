@@ -1,35 +1,41 @@
 <?php 
 
-$id = $_GET["id"];
-echo "<p>ID ha sido seteada: " . $id . "</p>";
+if ($_GET["fromfile"] == "TRUE"){
 
-include('config.php');
-echo "<p>config.php incluído.</p>";
+	$id = $_GET["id"];
+	echo "<p>ID ha sido seteada: " . $id . "</p>";
 
-$queryB = "DELETE FROM `Telefonos_Bandas` WHERE `idTelefonos` = " . $id;
-echo "<p>Query de bandas creado: " . $queryB . "</p>";
+	include('config.php');
+	echo "<p>config.php incluído.</p>";
 
-$queryT = "DELETE FROM `Telefonos` WHERE `idTelefonos` = " . $id;
-echo "<p>Query de teléfono creado: " . $queryT . "</p>";
+	$queryB = "DELETE FROM `Telefonos_Bandas` WHERE `idTelefonos` = " . $id;
+	echo "<p>Query de bandas creado: " . $queryB . "</p>";
 
-$resultB = mysqli_query($conn, $queryB);
-echo "<p>Query de bandas realizado<p>";
+	$queryT = "DELETE FROM `Telefonos` WHERE `idTelefonos` = " . $id;
+	echo "<p>Query de teléfono creado: " . $queryT . "</p>";
 
-if (!$resultB) {
-	echo "<p>ERROR: NO SE HAN ELIMINADO LAS BANDAS DEL TELÉFONO</p>";
+	$resultB = mysqli_query($conn, $queryB);
+	echo "<p>Query de bandas realizado<p>";
+
+	if (!$resultB) {
+		echo "<p>ERROR: NO SE HAN ELIMINADO LAS BANDAS DEL TELÉFONO</p>";
+	}
+	else {
+		echo "<p>LAS BANDAS DEL TELEFONO HAN SIDO ELIMINADAS</p>";
+	}
+
+	$resultT = mysqli_query($conn, $queryT);
+	echo "<p>Query de bandas realizado<p>";
+
+	if (!$resultT) {
+		echo "<p>ERROR: NO SE HA ELIMINADO EL TELÉFONO</p>";
+	}
+	else {
+		echo "<p>EL TELÉFONO HA SIDO ELIMINADO</p>";
+	}
 }
 else {
-	echo "<p>LAS BANDAS DEL TELEFONO HAN SIDO ELIMINADAS</p>";
-}
-
-$resultT = mysqli_query($conn, $queryT);
-echo "<p>Query de bandas realizado<p>";
-
-if (!$resultT) {
-	echo "<p>ERROR: NO SE HA ELIMINADO EL TELÉFONO</p>";
-}
-else {
-	echo "<p>EL TELÉFONO HA SIDO ELIMINADO</p>";
+	echo "<p>EL ARCHIVO NO HA SIDO ACCEDIDO DESDE EL LISTADOR. NO SE HA REALIZADO NADA.</p>";
 }
 
 ?>

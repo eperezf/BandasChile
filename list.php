@@ -95,7 +95,7 @@ $result = mysqli_query($conn, $query);
 					</tr>
 					<script>
 						function delete<?php echo $row['idTelefonos']; ?>() {
-							if(confirm("Estás seguro que quieres eliminar el: \n<?php echo $row['NombreCompleto'] ?> \n ID <?php echo $row['idTelefonos'] ?>?")) document.location = '/delete.php?id=<?php echo $row["idTelefonos"] ?>';
+							if(confirm("Estás seguro que quieres eliminar el: \n<?php echo $row['NombreCompleto'] ?> \n ID <?php echo $row['idTelefonos'] ?>?")) document.location = '/delete.php?id=<?php echo $row["idTelefonos"] ?>&fromfile=TRUE';
 						}
 					</script>
 				<?php endwhile; ?>
