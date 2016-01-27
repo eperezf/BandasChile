@@ -272,10 +272,10 @@ if ($_GET["Operadora"] == ""){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="stylesheet" href="css/theme.min.css">
-  <link href='https://fonts.googleapis.com/css?family=Titilium+Web' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
   <style>
     body {
-      font-family: 'Titilium Web', sans-serif;
+      font-family: 'Titillium Web', sans-serif;
     }
   </style>
 </head>
@@ -372,7 +372,7 @@ if ($_GET["Operadora"] == ""){
 </div>
 <footer class="footer">
     <div class="container">
-      <p class="text-muted">Verificador de Bandas <a href="about.php">0.8</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
+      <p class="text-muted">Verificador de Bandas <a href="about.php">0.9</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
     </div>
   </footer>
 </body>

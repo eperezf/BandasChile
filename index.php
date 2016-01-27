@@ -20,10 +20,10 @@ $result = mysqli_query($conn, $query);
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
   <link rel="stylesheet" href="css/theme.min.css">
-  <link href='https://fonts.googleapis.com/css?family=Titilium+Web' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
   <style>
     body {
-      font-family: 'Titilium Web', sans-serif;
+      font-family: 'Titillium Web', sans-serif;
     }
   </style>
 </head>
@@ -100,7 +100,7 @@ $result = mysqli_query($conn, $query);
   </div>
   <footer class="footer">
     <div class="container">
-      <p class="text-muted">Verificador de Bandas <a href="about.php">0.8</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
+      <p class="text-muted">Verificador de Bandas <a href="about.php">0.9</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
     </div>
   </footer>
   <script type="text/javascript">
