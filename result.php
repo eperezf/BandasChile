@@ -265,14 +265,20 @@ if ($_GET["Operadora"] == ""){
 <head>
   <title>Verificador de bandas | Pisapapeles.net</title>
   <meta charset="UTF-8">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<link rel="stylesheet" href="css/theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
+  <?php if ($_GET["design"] == "Entel"): ?>
+    <link rel="stylesheet" href="/css/entel.min.css">
+  <?php else : ?>
+    <link rel="stylesheet" href="/css/pisapapeles.min.css">
+  <?php endif ?>
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/footer.css">
   <style>
     body {
       font-family: 'Titillium Web', sans-serif;
@@ -312,7 +318,7 @@ if ($_GET["Operadora"] == ""){
             <div class="col-md-4">
               <p><img src="http://placehold.it/600x800" class="img-responsive"></p>
               <h3><p class="text-center"><?php echo $Telefono->NombreCompleto ?></p></h3>
-              <?php if ($Telefono->LinkReview != ""){echo '<h3><p class="text-center"><a href="http://pisapapeles.net/' . $Telefono->LinkReview . '">Leer review</a></p></h3>';}; ?>
+              <?php if ($Telefono->LinkReview != ""){echo '<h2><p class="text-center"><a href="http://pisapapeles.net/' . $Telefono->LinkReview . '" class="btn btn-warning">Leer review</a></p></h2>';}; ?>
             </div>
             <div class="col-md-4">
               <div class="panel-group">
