@@ -1,6 +1,6 @@
 <?php
 
-$query = $_POST['search'];
+$query = $_GET['q'];
 
 include_once('config.php');
 $array = array();
