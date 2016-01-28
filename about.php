@@ -58,13 +58,14 @@ while ($row = mysqli_fetch_array($result)){
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://pisapapeles.net"><img src="/img/emasp.png"></a>
+      <a class="navbar-brand navbar-active" href="http://pisapapeles.net"><img src="/img/emasp.png"></a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+        <li><a href="/index.php">Inicio</a></li>
         <li><a href="http://pisapapeles.net">Pisapapeles</a></li>
         <li><a href="http://entel.cl">Entel</a></li>
-        <li class="active"><a href="/about.php">Acerca de</a></li>
+        <li class="active"><a href="#">Acerca de</a></li>
       </ul>
     </div>
   </div>

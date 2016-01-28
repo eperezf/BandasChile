@@ -304,6 +304,7 @@ if ($_GET["Operadora"] == ""){
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+        <li><a href="/index.php">Inicio</a></li>
         <li><a href="http://pisapapeles.net">Pisapapeles</a></li>
         <li><a href="http://entel.cl">Entel</a></li>
         <li><a href="/about.php">Acerca de</a></li>
