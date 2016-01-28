@@ -30,7 +30,7 @@ $result = mysqli_query($conn, $query);
       font-family: 'Titillium Web', sans-serif;
     }
     .navbar-brand {
-      padding: 3px 15px;
+      padding: 7px 15px;
     }
   </style>
 </head>
@@ -46,7 +46,7 @@ $result = mysqli_query($conn, $query);
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand navbar-active" href="http://pisapapeles.net">
+      <a class="navbar-brand navbar-active" href="/index.php">
         <?php if ($_GET["Branding"] == "True"): ?>
            <img src="/img/e.png" class="img-responsive">
         <?php elseif ($_GET["Branding"] == "Partial") : ?>

@@ -272,7 +272,7 @@ if ($_GET["Operadora"] == ""){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
-  <?php if ($_GET["branding"] == "True" || $_GET["Branding"] == "Partial"): ?>
+  <?php if ($_GET["Branding"] == "True" || $_GET["Branding"] == "Partial"): ?>
     <link rel="stylesheet" href="/css/entel.min.css">
   <?php else : ?>
     <link rel="stylesheet" href="/css/pisapapeles.min.css">
@@ -284,7 +284,7 @@ if ($_GET["Operadora"] == ""){
       font-family: 'Titillium Web', sans-serif;
     }
     .navbar-brand {
-      padding: 3px 15px;
+      padding: 7px 15px;
     }
   </style>
 </head>
@@ -300,7 +300,15 @@ if ($_GET["Operadora"] == ""){
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand navbar-active" href="http://pisapapeles.net"><img src="/img/emasp.png" class="img-responsive"></a>
+      <a class="navbar-brand navbar-active" href="/index.php">
+        <?php if ($_GET["Branding"] == "True"): ?>
+           <img src="/img/e.png" class="img-responsive">
+        <?php elseif ($_GET["Branding"] == "Partial") : ?>
+           <img src="/img/emasp.png" class="img-responsive">
+        <?php else: ?>
+          <img src="/img/p.png" class="img-responsive">
+        <?php endif; ?>
+      </a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
