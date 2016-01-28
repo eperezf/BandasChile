@@ -26,6 +26,7 @@ class InputPhone {
 	public $LTE2600 = "";
 	public $LTE700 = "";
 	public $LTEAWS = "";
+	public $LTEA = "";
 	public $NombreCompleto = "";
 
 	//Datos de inserción de datos del teléfono y resultados
@@ -106,6 +107,14 @@ class InputPhone {
 			$this->LTEAWS = "FALSE";
 		};
 
+		//Sección de Otros
+		if (isset($_POST["LTEA"])){
+			$this->LTEA = "1";
+		}
+		else {
+			$this->LTEA = "0";
+		}
+
 		//Marca, modelo, variante, nombre completo
 		$this->Marca = $_POST["Marca"];
 		$this->Modelo = $_POST["Modelo"];
@@ -115,7 +124,7 @@ class InputPhone {
 
 	}
 
-	//Función para saber si hay un duplicado en la base de datos BEGIN
+	//Función para saber si hay un duplicado en la base de datos
 	function GetDuplicate($Telefono) {
 		include('config.php');
 		$conn->set_charset("utf8");
@@ -132,9 +141,8 @@ class InputPhone {
 			$this->DuplicateMatch = "TRUE";
 		}
 	}
-	//Función para saber si hay un duplicado en la base de datos END
 
-	//Función para insertar el teléfono en la base de datos si no hay duplicado BEGIN
+	//Función para insertar el teléfono en la base de datos si no hay duplicado
 	function InsertTelefono () {
 		include('config.php');
 		$conn->set_charset("utf8");
@@ -144,7 +152,7 @@ class InputPhone {
 			$this->InsertTelefonoID = "NULL";
 		}
 		else {
-			$InsertTelefono = "INSERT INTO `Telefonos` (`Marca`, `Modelo`, `Variante`, `NombreCompleto`, `LinkReview`) VALUES ('" . mysqli_real_escape_string($conn, $this->Marca) . "', '" . mysqli_real_escape_string($conn, $this->Modelo) . "', '" . mysqli_real_escape_string($conn, $this->Variante) . "', '" . mysqli_real_escape_string($conn, $this->NombreCompleto) . "', '" . mysqli_real_escape_string($conn, $this->LinkReview) . "')";
+			$InsertTelefono = "INSERT INTO `Telefonos` (`Marca`, `Modelo`, `Variante`, `NombreCompleto`, `LinkReview`, `LTEA`) VALUES ('" . mysqli_real_escape_string($conn, $this->Marca) . "', '" . mysqli_real_escape_string($conn, $this->Modelo) . "', '" . mysqli_real_escape_string($conn, $this->Variante) . "', '" . mysqli_real_escape_string($conn, $this->NombreCompleto) . "', '" . mysqli_real_escape_string($conn, $this->LinkReview) . "', '" . mysqli_real_escape_string($conn, $this->LTEA) . "')" ;
 			$Result = mysqli_query($conn, $InsertTelefono);
 			if (! $Result){
 				$this->InsertTelefonoResult = "ERROR";

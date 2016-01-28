@@ -121,10 +121,12 @@ require_once('config.php');
 				  <input type="checkbox" id="LTEAWS" name="LTEAWS" value="TRUE"> 1700/2100MHz. (AWS)
 				</label>
 			</div>
-
-		
-			
-		
+			<div class="form-group">
+				<label>Otros:</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="LTEA" name="LTEA" value="TRUE"> LTE-Advanced
+				</label>
+			</div>
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 	</div>
