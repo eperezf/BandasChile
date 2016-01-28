@@ -235,7 +235,7 @@ if ($Telefono->LTEA == "1"){
   $LTEAResponse = "es compatible con LTE-Advanced";
 }
 else {
-  $LTEABoxText = $DangerIcon . " Compatible con LTE-A"; 
+  $LTEABoxText = $DangerIcon . " No compatible con LTE-A"; 
   $LTEABoxType = "danger";
   $LTEAResponse = "no es compatible con LTE-Advanced";
 }
