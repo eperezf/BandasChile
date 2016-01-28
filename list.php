@@ -59,14 +59,14 @@ $result = mysqli_query($conn, $query);
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="index.php">Pisapapeles</a>
+	      <a class="navbar-brand" href="/index.php">BandasChile</a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li><a href="/">Inicio</a></li>
+	        <li><a href="/index.php">Inicio</a></li>
 	        <li class="active"><a href="#">Lista</a></li>
 	        <li><a href="/add.php">Agregar</a></li>
-	        <li><a href="http://pisapapeles.net">Volver al blog</a></li>
+	        <li><a href="http://pisapapeles.net">Ir al blog</a></li>
 	      </ul>
 	    </div>
 	  </div>
