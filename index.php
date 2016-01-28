@@ -18,7 +18,7 @@ $result = mysqli_query($conn, $query);
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
-  <?php if ($_GET["design"] == "Entel"): ?>
+  <?php if ($_GET["Branding"] == "True" || $_GET["Branding"] == "Partial"): ?>
     <link rel="stylesheet" href="/css/entel.min.css">
   <?php else : ?>
     <link rel="stylesheet" href="/css/pisapapeles.min.css">
@@ -46,7 +46,15 @@ $result = mysqli_query($conn, $query);
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand navbar-active" href="http://pisapapeles.net"><img src="/img/emasp.png"></a>
+      <a class="navbar-brand navbar-active" href="http://pisapapeles.net">
+        <?php if ($_GET["Branding"] == "True"): ?>
+           <img src="/img/e.png" class="img-responsive">
+        <?php elseif ($_GET["Branding"] == "Partial") : ?>
+           <img src="/img/emasp.png" class="img-responsive">
+        <?php else: ?>
+          <img src="/img/p.png" class="img-responsive">
+        <?php endif; ?>
+      </a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
@@ -104,7 +112,10 @@ $result = mysqli_query($conn, $query);
     <div class="row">
       <hr></hr>
       <div class="col-md-12">
-        <h3><p class="text-center">Un proyecto</h3><img src="http://static.pisapapeles.net/uploads/2014/09/logopisapapeles-copy.png" class="img-responsive center-block"></p>
+        <?php if ($_GET["Branding"] == "True"): ?>
+        <?php else : ?>
+          <h3><p class="text-center">Un proyecto</h3><img src="http://static.pisapapeles.net/uploads/2014/09/logopisapapeles-copy.png" class="img-responsive center-block"></p>
+        <?php endif ?>  
       </div>
     </div>
   </div>
