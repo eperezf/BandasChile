@@ -41,11 +41,11 @@ $telefono->InsertBandas();
 <p>Modelo: <?php echo $telefono->Modelo ?></p>
 <p>Variante: <?php echo $telefono->Variante ?></p>
 <p>Nombre Completo: <?php echo $telefono->NombreCompleto ?></p>
-<p>----Bandas 2G----</p>
+<p>----Bandas 2G:----</p>
 <p>1900MHz.: <?php echo $telefono->GSM1900 ?></p>
 <p>900MHz.: <?php echo $telefono->GSM900 ?></p>
 <p>850MHz.: <?php echo $telefono->GSM850 ?></p>
-<p>----Bandas 3G----</p>
+<p>----Bandas 3G:----</p>
 <p>1900MHz.: <?php echo $telefono->UMTS1900 ?></p>
 <p>900MHz.: <?php echo $telefono->UMTS900 ?></p>
 <p>850MHz.: <?php echo $telefono->UMTS850 ?></p>
@@ -54,6 +54,8 @@ $telefono->InsertBandas();
 <p>2600MHz.: <?php echo $telefono->LTE2600 ?></p>
 <p>700MHz.: <?php echo $telefono->LTE700 ?></p>
 <p>AWS: <?php echo $telefono->LTEAWS ?></p>
+<p>------Otros:------</p>
+<p>LTE-Advanced: <?php echo $telefono->LTEA ?></p>
 <p>----RESULTADOS----</p>
 <p>Coincidencia en la base de datos: <?php echo $telefono->DuplicateMatch ?></p>
 <p>Estado del agregador de teléfono: <?php echo $telefono->InsertTelefonoResult ?></p>
