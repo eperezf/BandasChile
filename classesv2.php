@@ -529,6 +529,7 @@ class Telefono {
 	public $Identical;
 	public $Similar;
 	public $NombreCompleto;
+	public $LTEA = "FALSE";
 
 	//Datos de las bandas del teléfono
 	public $GSM1900 = "FALSE";
@@ -541,6 +542,7 @@ class Telefono {
 	public $LTE2600 = "FALSE";
 	public $LTE700 = "FALSE";
 	public $LTEAWS = "FALSE";
+	
 
 	function __construct ($NameInput){
 		include('config.php');
@@ -553,6 +555,7 @@ class Telefono {
   		$this->Modelo = $row["Modelo"];
   		$this->Variante = $row["Variante"];
   		$this->LinkReview = $row["LinkReview"];
+  		$this->LTEA = $row["LTEA"];
 		};
 		$query = "";
 		$result = "";
@@ -568,6 +571,7 @@ class Telefono {
 	  		$this->Modelo = $row["Modelo"];
 	  		$this->Variante = $row["Variante"];
 	  		$this->LinkReview = $row["LinkReview"];
+	  		$this->LTEA = $row["LTEA"];
 			};
 		}
 		$this->NombreCompleto = $this->Marca . " " . $this->Modelo . " " . $this->Variante;

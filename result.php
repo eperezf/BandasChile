@@ -229,6 +229,17 @@ if ($LTEList == ""){
   $LTEBoxType = "danger";
 }
 
+if ($Telefono->LTEA == "1"){
+  $LTEABoxText = $OKIcon . " Compatible con LTE-A"; 
+  $LTEABoxType = "success";
+  $LTEAResponse = "es compatible con LTE-Advanced";
+}
+else {
+  $LTEABoxText = $DangerIcon . " Compatible con LTE-A"; 
+  $LTEABoxType = "danger";
+  $LTEAResponse = "no es compatible con LTE-Advanced";
+}
+
 if ($_GET["Telefono"] == ""){
   $_SESSION["Alert"] = "Por favor busca un teléfono";
   header("Location: /");
@@ -376,6 +387,20 @@ if ($_GET["Operadora"] == ""){
                     <div class="panel-body">
                       <p><?php echo $Operadora->Nombre ?> funciona en la(s) frecuencias:</p>
                       <?php echo $LTEList ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-group">
+                <div class="panel panel-<?php echo $LTEABoxType ?>">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#LTEA"><?php echo $LTEABoxText ?></a>
+                    </h4>
+                  </div>
+                  <div id="LTEA" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> variante <?php echo $Telefono->Variante ?> <?php echo $LTEAResponse ?></p>
                     </div>
                   </div>
                 </div>
