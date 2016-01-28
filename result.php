@@ -283,6 +283,9 @@ if ($_GET["Operadora"] == ""){
     body {
       font-family: 'Titillium Web', sans-serif;
     }
+    .navbar-brand {
+      padding: 3px 15px;
+    }
   </style>
 </head>
 <body>
@@ -297,11 +300,13 @@ if ($_GET["Operadora"] == ""){
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://pisapapeles.net">Pisapapeles</a>
+      <a class="navbar-brand navbar-active" href="http://pisapapeles.net"><img src="/img/emasp.png"></a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/index.php">Bandas</a></li>
+        <li><a href="http://pisapapeles.net">Pisapapeles</a></li>
+        <li><a href="http://entel.cl">Entel</a></li>
+        <li><a href="/about.php">Acerca de</a></li>
       </ul>
     </div>
   </div>
