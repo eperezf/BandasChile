@@ -76,7 +76,7 @@ require_once('config.php');
 			</div>
 			<div class="form-group">
 				<label for="">Variante</label>
-				<input type="text" class="form-control" id="Variante" name="Variante" required="required" placeholder="Ej.: A1423">
+				<input type="text" class="form-control" id="Variante" name="Variante" placeholder="Ej.: A1423">
 			</div>
 			<div class="form-group">
 				<label for="">SLUG (Link sin "http://pisapapeles.net/") del review:</label>
