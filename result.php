@@ -238,7 +238,18 @@ else {
   $LTEABoxText = $DangerIcon . " No compatible con LTE-A"; 
   $LTEABoxType = "danger";
   $LTEAResponse = "no es compatible con LTE-Advanced";
+};
+
+if ($Telefono->HDVoice == "1"){
+  $HDVoiceBoxText = $OKIcon . " Compatible con Voz HD"; 
+  $HDVoiceBoxType = "success";
+  $HDVoiceResponse = "es compatible con Voz HD";
 }
+else {
+  $HDVoiceBoxText = $DangerIcon . " No compatible con Voz HD"; 
+  $HDVoiceBoxType = "danger";
+  $HDVoiceResponse = "no es compatible con Voz HD";
+};
 
 if ($_GET["Telefono"] == ""){
   $_SESSION["Alert"] = "Por favor busca un teléfono";
@@ -401,6 +412,20 @@ if ($_GET["Operadora"] == ""){
                   <div id="LTEA" class="panel-collapse collapse">
                     <div class="panel-body">
                       <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> variante <?php echo $Telefono->Variante ?> <?php echo $LTEAResponse ?></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-group">
+                <div class="panel panel-<?php echo $HDVoiceBoxType ?>">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#HDVoice"><?php echo $HDVoiceBoxText ?></a>
+                    </h4>
+                  </div>
+                  <div id="HDVoice" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> variante <?php echo $Telefono->Variante ?> <?php echo $HDVoiceResponse ?></p>
                     </div>
                   </div>
                 </div>
