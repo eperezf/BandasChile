@@ -442,7 +442,7 @@ if ($_GET["Operadora"] == ""){
 </div>
 <footer class="footer">
     <div class="container">
-      <p class="text-muted">Verificador de Bandas <a href="about.php">0.9</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
+      <p class="text-muted">Verificador de Bandas <a href="about.php">1.0</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
     </div>
   </footer>
 </body>
