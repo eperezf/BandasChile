@@ -27,6 +27,7 @@ class InputPhone {
 	public $LTE700 = "";
 	public $LTEAWS = "";
 	public $LTEA = "";
+	public $HDVoice = "";
 	public $NombreCompleto = "";
 
 	//Datos de inserción de datos del teléfono y resultados
@@ -114,6 +115,12 @@ class InputPhone {
 		else {
 			$this->LTEA = "0";
 		}
+		if (isset($_POST["HDVoice"])){
+			$this->HDVoice = "1";
+		}
+		else {
+			$this->HDVoice = "0";
+		}
 
 		//Marca, modelo, variante, nombre completo
 		$this->Marca = $_POST["Marca"];
@@ -152,7 +159,7 @@ class InputPhone {
 			$this->InsertTelefonoID = "NULL";
 		}
 		else {
-			$InsertTelefono = "INSERT INTO `Telefonos` (`Marca`, `Modelo`, `Variante`, `NombreCompleto`, `LinkReview`, `LTEA`) VALUES ('" . mysqli_real_escape_string($conn, $this->Marca) . "', '" . mysqli_real_escape_string($conn, $this->Modelo) . "', '" . mysqli_real_escape_string($conn, $this->Variante) . "', '" . mysqli_real_escape_string($conn, $this->NombreCompleto) . "', '" . mysqli_real_escape_string($conn, $this->LinkReview) . "', '" . mysqli_real_escape_string($conn, $this->LTEA) . "')" ;
+			$InsertTelefono = "INSERT INTO `Telefonos` (`Marca`, `Modelo`, `Variante`, `NombreCompleto`, `LinkReview`, `LTEA`, `HDVoice`) VALUES ('" . mysqli_real_escape_string($conn, $this->Marca) . "', '" . mysqli_real_escape_string($conn, $this->Modelo) . "', '" . mysqli_real_escape_string($conn, $this->Variante) . "', '" . mysqli_real_escape_string($conn, $this->NombreCompleto) . "', '" . mysqli_real_escape_string($conn, $this->LinkReview) . "', '" . mysqli_real_escape_string($conn, $this->LTEA) . "', '" . mysqli_real_escape_string($conn, $this->HDVoice) . "')" ;
 			$Result = mysqli_query($conn, $InsertTelefono);
 			if (! $Result){
 				$this->InsertTelefonoResult = "ERROR";
