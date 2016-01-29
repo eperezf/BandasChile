@@ -87,13 +87,13 @@ while ($row = mysqli_fetch_array($result)){
 <div class="container">
   <legend>Acerca de</legend>
   <p>Verificador de Bandas</p>
-  <p>Versión: 1.0.1 "Creedence Clearwater Revival"</p>
+  <p>Versión: 1.0.2 "Creedence Clearwater Revival"</p>
   <p>Estado de la base de datos: <?php echo $Status ?></p>
   <p>Teléfonos en la base de datos: <?php echo $Telefonos ?></p>
 </div>
 <footer class="footer">
   <div class="container">
-    <p class="text-muted">Verificador de Bandas <a href="about.php">1.0.1</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
+    <p class="text-muted">Verificador de Bandas <a href="about.php">1.0.2</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
   </div>
 </footer>
 </body>
