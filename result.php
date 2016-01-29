@@ -336,7 +336,12 @@ if ($_GET["Operadora"] == ""){
       <ul class="nav navbar-nav">
         <li><a href="/index.php">Inicio</a></li>
         <li><a href="http://pisapapeles.net">Pisapapeles</a></li>
-        <li><a href="http://entel.cl">Entel</a></li>
+        <?php if ($_GET["Branding"] == "True"): ?>
+           <li><a href="http://entel.cl">Entel</a></li>
+        <?php elseif ($_GET["Branding"] == "Partial") : ?>
+           <li><a href="http://entel.cl">Entel</a></li>
+        <?php else: ?>
+        <?php endif; ?>       
         <li><a href="/about.php">Acerca de</a></li>
       </ul>
     </div>
@@ -442,7 +447,7 @@ if ($_GET["Operadora"] == ""){
 </div>
 <footer class="footer">
     <div class="container">
-      <p class="text-muted">Verificador de Bandas <a href="about.php">1.0</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
+      <p class="text-muted">Verificador de Bandas <a href="about.php">1.0.1</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
     </div>
   </footer>
 </body>
