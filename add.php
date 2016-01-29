@@ -126,6 +126,10 @@ require_once('config.php');
 				<label class="checkbox-inline">
 				  <input type="checkbox" id="LTEA" name="LTEA" value="TRUE"> LTE-Advanced
 				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="HDVoice" name="HDVoice" value="TRUE"> Voz HD
+				</label>
+
 			</div>
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>

@@ -70,10 +70,10 @@ while ($row = mysqli_fetch_array($result)){
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Inicio</a></li>
+        <li><a href="/index.php">Inicio</a></li>
         <li><a href="http://pisapapeles.net">Pisapapeles</a></li>
         <li><a href="http://entel.cl">Entel</a></li>
-        <li><a href="/about.php">Acerca de</a></li>
+        <li class="active"><a href="#">Acerca de</a></li>
       </ul>
     </div>
   </div>
