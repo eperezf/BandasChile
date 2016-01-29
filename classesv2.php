@@ -530,6 +530,7 @@ class Telefono {
 	public $Similar;
 	public $NombreCompleto;
 	public $LTEA = "FALSE";
+	public $HDVoice = "FALSE";
 
 	//Datos de las bandas del teléfono
 	public $GSM1900 = "FALSE";
@@ -556,6 +557,7 @@ class Telefono {
   		$this->Variante = $row["Variante"];
   		$this->LinkReview = $row["LinkReview"];
   		$this->LTEA = $row["LTEA"];
+  		$this->HDVoice = $row["HDVoice"];
 		};
 		$query = "";
 		$result = "";
@@ -572,6 +574,7 @@ class Telefono {
 	  		$this->Variante = $row["Variante"];
 	  		$this->LinkReview = $row["LinkReview"];
 	  		$this->LTEA = $row["LTEA"];
+	  		$this->HDVoice = $row["HDVoice"];
 			};
 		}
 		$this->NombreCompleto = $this->Marca . " " . $this->Modelo . " " . $this->Variante;
