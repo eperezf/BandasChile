@@ -407,34 +407,36 @@ if ($_GET["Operadora"] == ""){
                   </div>
                 </div>
               </div>
-              <div class="panel-group">
-                <div class="panel panel-<?php echo $LTEABoxType ?>">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#LTEA"><?php echo $LTEABoxText ?></a>
-                    </h4>
-                  </div>
-                  <div id="LTEA" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> variante <?php echo $Telefono->Variante ?> <?php echo $LTEAResponse ?></p>
+              <?php if ($_GET["Operadora"] == "Entel"): ?>
+                <div class="panel-group">
+                  <div class="panel panel-<?php echo $LTEABoxType ?>">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#LTEA"><?php echo $LTEABoxText ?></a>
+                      </h4>
+                    </div>
+                    <div id="LTEA" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> variante <?php echo $Telefono->Variante ?> <?php echo $LTEAResponse ?></p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="panel-group">
-                <div class="panel panel-<?php echo $HDVoiceBoxType ?>">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#HDVoice"><?php echo $HDVoiceBoxText ?></a>
-                    </h4>
-                  </div>
-                  <div id="HDVoice" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> variante <?php echo $Telefono->Variante ?> <?php echo $HDVoiceResponse ?></p>
+                <div class="panel-group">
+                  <div class="panel panel-<?php echo $HDVoiceBoxType ?>">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#HDVoice"><?php echo $HDVoiceBoxText ?></a>
+                      </h4>
+                    </div>
+                    <div id="HDVoice" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> variante <?php echo $Telefono->Variante ?> <?php echo $HDVoiceResponse ?></p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              <?php endif; ?>
             </div>
             <div class="col-md-4">
               <img src="img/<?php echo str_replace(" ", "_", $Operadora->Nombre) ?>.png" class="img-responsive center-block" alt="<?php echo $Operadora->Nombre ?>" style="max-height: 150px;">
@@ -447,7 +449,7 @@ if ($_GET["Operadora"] == ""){
 </div>
 <footer class="footer">
     <div class="container">
-      <p class="text-muted">Verificador de Bandas <a href="about.php">1.0.1</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
+      <p class="text-muted">Verificador de Bandas <a href="about.php">1.0.2</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
     </div>
   </footer>
 </body>
