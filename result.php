@@ -236,23 +236,23 @@ if ($_GET["Operadora"] != "Entel"){
   if ($Telefono->LTEA == "1"){
     $LTEABoxText = $WarningIcon . " Compatible con LTE-A"; 
     $LTEABoxType = "warning";
-    $LTEAResponse = 'es compatible con LTE-Advanced. Servicio exclusivo de Entel. <a href="http://entel.cl/portabilidad">Pórtate aquí</a>';
+    $LTEAResponse = 'es compatible con LTE-Advanced. <b>Servicio exclusivo de Entel. <a href="http://entel.cl/portabilidad">Pórtate aquí</a></b>';
   }
   else {
     $LTEABoxText = $DangerIcon . " No compatible con LTE-A"; 
     $LTEABoxType = "danger";
-    $LTEAResponse = "no es compatible con LTE-Advanced. Servicio exclusivo de Entel.";
+    $LTEAResponse = "no es compatible con LTE-Advanced. <b>Servicio exclusivo de Entel.</b>";
   };
 
   if ($Telefono->HDVoice == "1"){
     $HDVoiceBoxText = $WarningIcon . " Compatible con Voz HD"; 
     $HDVoiceBoxType = "warning";
-    $HDVoiceResponse = 'es compatible con Voz HD. Servicio exclusivo de Entel. <a href="http://entel.cl/portabilidad">Pórtate aquí</a>';
+    $HDVoiceResponse = 'es compatible con Voz HD. <b>Servicio exclusivo de Entel. <a href="http://entel.cl/portabilidad">Pórtate aquí</a></b>';
   }
   else {
     $HDVoiceBoxText = $DangerIcon . " No compatible con Voz HD"; 
     $HDVoiceBoxType = "danger";
-    $HDVoiceResponse = "no es compatible con Voz HD. Servicio exclusivo de Entel.";
+    $HDVoiceResponse = "no es compatible con Voz HD. <b>Servicio exclusivo de Entel.</b>";
   };
 }
 
@@ -260,23 +260,23 @@ else {
   if ($Telefono->LTEA == "1"){
     $LTEABoxText = $OKIcon . " Compatible con LTE-A"; 
     $LTEABoxType = "Success";
-    $LTEAResponse = "es compatible con LTE-Advanced. Servicio exclusivo de Entel.";
+    $LTEAResponse = "es compatible con LTE-Advanced. <b>Servicio exclusivo de Entel.</b>";
   }
   else {
     $LTEABoxText = $DangerIcon . " No compatible con LTE-A"; 
     $LTEABoxType = "danger";
-    $LTEAResponse = "no es compatible con LTE-Advanced. Servicio exclusivo de Entel.";
+    $LTEAResponse = "no es compatible con LTE-Advanced. <b>Servicio exclusivo de Entel.</b>";
   };
 
   if ($Telefono->HDVoice == "1"){
     $HDVoiceBoxText = $OKIcon . " Compatible con Voz HD"; 
     $HDVoiceBoxType = "Success";
-    $HDVoiceResponse = "es compatible con Voz HD. Servicio exclusivo de Entel.";
+    $HDVoiceResponse = "es compatible con Voz HD. <b>Servicio exclusivo de Entel.</b>";
   }
   else {
     $HDVoiceBoxText = $DangerIcon . " No compatible con Voz HD"; 
     $HDVoiceBoxType = "danger";
-    $HDVoiceResponse = "no es compatible con Voz HD. Servicio exclusivo de Entel.";
+    $HDVoiceResponse = "no es compatible con Voz HD. <b>Servicio exclusivo de Entel.</b>";
   };
 }
 
@@ -319,9 +319,6 @@ if ($_GET["Operadora"] == ""){
   <title>Verificador de bandas | Pisapapeles.net</title>
   <meta charset="UTF-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  
-  <!-- Latest compiled and minified CSS -->
-  <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
