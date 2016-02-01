@@ -17,6 +17,8 @@ $GSMList = "";
 $UMTSList = "";
 $LTEList = "";
 
+$LinkFoto = $Telefono->Marca . str_replace(" ", "", $Telefono->Modelo);
+
 $Operadora->GetBandas();
 $GSM1900 = $Comparacion->ProcessBand($Operadora->GSM1900, $Telefono->GSM1900, "GSM1900");
 $GSM900 = $Comparacion->ProcessBand($Operadora->GSM900, $Telefono->GSM900, "GSM900");
@@ -358,7 +360,7 @@ if ($_GET["Operadora"] == ""){
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="col-md-4">
-              <p><img src="http://placehold.it/600x800" class="img-responsive"></p>
+              <p><img src="<?php echo '/img/phones/' . $LinkFoto . '.png' ?>" class="img-responsive" onError="this.onerror=null;this.src='http://placehold.it/600x800';"></p>
               <h3><p class="text-center"><?php echo $Telefono->NombreCompleto ?></p></h3>
               <?php if ($Telefono->LinkReview != ""){echo '<h2><p class="text-center"><a href="http://pisapapeles.net/' . $Telefono->LinkReview . '" class="btn btn-warning">Leer review</a></p></h2>';}; ?>
             </div>
@@ -442,7 +444,7 @@ if ($_GET["Operadora"] == ""){
 </div>
 <footer class="footer">
     <div class="container">
-      <p class="text-muted">Verificador de Bandas <a href="about.php">1.0.3</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
+      <p class="text-muted">Verificador de Bandas <a href="about.php">1.0.4</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
     </div>
   </footer>
 </body>
