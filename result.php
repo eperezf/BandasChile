@@ -17,6 +17,8 @@ $GSMList = "";
 $UMTSList = "";
 $LTEList = "";
 
+$LinkFoto = $Telefono->Marca . str_replace(" ", "", $Telefono->Modelo);
+
 $Operadora->GetBandas();
 $GSM1900 = $Comparacion->ProcessBand($Operadora->GSM1900, $Telefono->GSM1900, "GSM1900");
 $GSM900 = $Comparacion->ProcessBand($Operadora->GSM900, $Telefono->GSM900, "GSM900");
@@ -294,6 +296,7 @@ if ($_GET["Operadora"] == ""){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
+  <script src="js/collapse.js" type="text/javascript"></script>
   <?php if ($_GET["Branding"] == "True" || $_GET["Branding"] == "Partial"): ?>
     <link rel="stylesheet" href="/css/entel.min.css">
   <?php else : ?>
@@ -357,7 +360,7 @@ if ($_GET["Operadora"] == ""){
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="col-md-4">
-              <p><img src="http://placehold.it/600x800" class="img-responsive"></p>
+              <p><img src="<?php echo '/img/phones/' . $LinkFoto . '.png' ?>" class="img-responsive" onError="this.onerror=null;this.src='http://placehold.it/600x800';"></p>
               <h3><p class="text-center"><?php echo $Telefono->NombreCompleto ?></p></h3>
               <?php if ($Telefono->LinkReview != ""){echo '<h2><p class="text-center"><a href="http://pisapapeles.net/' . $Telefono->LinkReview . '" class="btn btn-warning">Leer review</a></p></h2>';}; ?>
             </div>
@@ -366,7 +369,7 @@ if ($_GET["Operadora"] == ""){
                 <div class="panel panel-<?php echo $GSMBoxType ?>">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#2G"><?php echo $GSMBoxText ?></a>
+                      <a data-toggle="collapse" href="#2G"><?php echo $GSMBoxText ?><span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
                     </h4>
                   </div>
                   <div id="2G" class="panel-collapse collapse">
@@ -376,12 +379,10 @@ if ($_GET["Operadora"] == ""){
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="panel-group">
                 <div class="panel panel-<?php echo $UMTSBoxType ?>">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#3G"><?php echo $UMTSBoxText ?></a>
+                      <a data-toggle="collapse" href="#3G"><?php echo $UMTSBoxText ?><span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
                     </h4>
                   </div>
                   <div id="3G" class="panel-collapse collapse">
@@ -391,12 +392,10 @@ if ($_GET["Operadora"] == ""){
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="panel-group">
                 <div class="panel panel-<?php echo $LTEBoxType ?>">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#4G"><?php echo $LTEBoxText ?></a>
+                      <a data-toggle="collapse" href="#4G"><?php echo $LTEBoxText ?><span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
                     </h4>
                   </div>
                   <div id="4G" class="panel-collapse collapse">
@@ -406,13 +405,11 @@ if ($_GET["Operadora"] == ""){
                     </div>
                   </div>
                 </div>
-              </div>
-              <?php if ($_GET["Operadora"] == "Entel"): ?>
-                <div class="panel-group">
+                <?php if ($_GET["Operadora"] == "Entel"): ?>
                   <div class="panel panel-<?php echo $LTEABoxType ?>">
                     <div class="panel-heading">
                       <h4 class="panel-title">
-                        <a data-toggle="collapse" href="#LTEA"><?php echo $LTEABoxText ?></a>
+                        <a data-toggle="collapse" href="#LTEA"><?php echo $LTEABoxText ?><span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
                       </h4>
                     </div>
                     <div id="LTEA" class="panel-collapse collapse">
@@ -421,12 +418,10 @@ if ($_GET["Operadora"] == ""){
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="panel-group">
                   <div class="panel panel-<?php echo $HDVoiceBoxType ?>">
                     <div class="panel-heading">
                       <h4 class="panel-title">
-                        <a data-toggle="collapse" href="#HDVoice"><?php echo $HDVoiceBoxText ?></a>
+                        <a data-toggle="collapse" href="#HDVoice"><?php echo $HDVoiceBoxText ?><span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
                       </h4>
                     </div>
                     <div id="HDVoice" class="panel-collapse collapse">
@@ -435,8 +430,8 @@ if ($_GET["Operadora"] == ""){
                       </div>
                     </div>
                   </div>
-                </div>
-              <?php endif; ?>
+                <?php endif; ?>
+              </div>
             </div>
             <div class="col-md-4">
               <img src="img/<?php echo str_replace(" ", "_", $Operadora->Nombre) ?>.png" class="img-responsive center-block" alt="<?php echo $Operadora->Nombre ?>" style="max-height: 150px;">
@@ -449,7 +444,7 @@ if ($_GET["Operadora"] == ""){
 </div>
 <footer class="footer">
     <div class="container">
-      <p class="text-muted">Verificador de Bandas <a href="about.php">1.0.2</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
+      <p class="text-muted">Verificador de Bandas <a href="about.php">1.0.4</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
     </div>
   </footer>
 </body>
