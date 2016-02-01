@@ -1,6 +1,7 @@
 <?php 
 
 include ('config.php');
+require_once('version.php');
 
 if ($conn->connect_errno) {
     $Status = "Houston, tenemos un problema. Por favor envía un correo a contacto@pisapapeles.net.";
@@ -87,13 +88,13 @@ while ($row = mysqli_fetch_array($result)){
 <div class="container">
   <legend>Acerca de</legend>
   <p>Verificador de Bandas</p>
-  <p>Versión: 1.0.4 "Creedence Clearwater Revival"</p>
+  <p>Versión: <?php echo $Version ?> "<?php echo $Codename ?>"</p>
   <p>Estado de la base de datos: <?php echo $Status ?></p>
   <p>Teléfonos en la base de datos: <?php echo $Telefonos ?></p>
 </div>
 <footer class="footer">
   <div class="container">
-    <p class="text-muted">Verificador de Bandas <a href="about.php">1.0.4</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
+    <p class="text-muted">Verificador de Bandas <a href="about.php"><?php echo $Version ?></a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
   </div>
 </footer>
 </body>

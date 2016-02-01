@@ -9,6 +9,7 @@ if (!isset($_GET["Operadora"])){
 session_start();
 
 require_once('classesv2.php');
+require_once('version.php');
 $Operadora = new Operadora($_GET["Operadora"]);
 $Telefono = new Telefono($_GET["Telefono"]);
 $Comparacion = new Comparacion;
@@ -231,27 +232,55 @@ if ($LTEList == ""){
   $LTEBoxType = "danger";
 }
 
-if ($Telefono->LTEA == "1"){
-  $LTEABoxText = $OKIcon . " Compatible con LTE-A"; 
-  $LTEABoxType = "success";
-  $LTEAResponse = "es compatible con LTE-Advanced";
-}
-else {
-  $LTEABoxText = $DangerIcon . " No compatible con LTE-A"; 
-  $LTEABoxType = "danger";
-  $LTEAResponse = "no es compatible con LTE-Advanced";
-};
+if ($_GET["Operadora"] != "Entel"){
+  if ($Telefono->LTEA == "1"){
+    $LTEABoxText = $WarningIcon . " Compatible con LTE-A"; 
+    $LTEABoxType = "warning";
+    $LTEAResponse = 'es compatible con LTE-Advanced. Servicio exclusivo de Entel. <a href="http://entel.cl/portabilidad">Pórtate aquí</a>';
+  }
+  else {
+    $LTEABoxText = $DangerIcon . " No compatible con LTE-A"; 
+    $LTEABoxType = "danger";
+    $LTEAResponse = "no es compatible con LTE-Advanced. Servicio exclusivo de Entel.";
+  };
 
-if ($Telefono->HDVoice == "1"){
-  $HDVoiceBoxText = $OKIcon . " Compatible con Voz HD"; 
-  $HDVoiceBoxType = "success";
-  $HDVoiceResponse = "es compatible con Voz HD";
+  if ($Telefono->HDVoice == "1"){
+    $HDVoiceBoxText = $WarningIcon . " Compatible con Voz HD"; 
+    $HDVoiceBoxType = "warning";
+    $HDVoiceResponse = 'es compatible con Voz HD. Servicio exclusivo de Entel. <a href="http://entel.cl/portabilidad">Pórtate aquí</a>';
+  }
+  else {
+    $HDVoiceBoxText = $DangerIcon . " No compatible con Voz HD"; 
+    $HDVoiceBoxType = "danger";
+    $HDVoiceResponse = "no es compatible con Voz HD. Servicio exclusivo de Entel.";
+  };
 }
+
 else {
-  $HDVoiceBoxText = $DangerIcon . " No compatible con Voz HD"; 
-  $HDVoiceBoxType = "danger";
-  $HDVoiceResponse = "no es compatible con Voz HD";
-};
+  if ($Telefono->LTEA == "1"){
+    $LTEABoxText = $OKIcon . " Compatible con LTE-A"; 
+    $LTEABoxType = "Success";
+    $LTEAResponse = "es compatible con LTE-Advanced. Servicio exclusivo de Entel.";
+  }
+  else {
+    $LTEABoxText = $DangerIcon . " No compatible con LTE-A"; 
+    $LTEABoxType = "danger";
+    $LTEAResponse = "no es compatible con LTE-Advanced. Servicio exclusivo de Entel.";
+  };
+
+  if ($Telefono->HDVoice == "1"){
+    $HDVoiceBoxText = $OKIcon . " Compatible con Voz HD"; 
+    $HDVoiceBoxType = "Success";
+    $HDVoiceResponse = "es compatible con Voz HD. Servicio exclusivo de Entel.";
+  }
+  else {
+    $HDVoiceBoxText = $DangerIcon . " No compatible con Voz HD"; 
+    $HDVoiceBoxType = "danger";
+    $HDVoiceResponse = "no es compatible con Voz HD. Servicio exclusivo de Entel.";
+  };
+}
+
+
 
 if ($_GET["Telefono"] == ""){
   $_SESSION["Alert"] = "Por favor busca un teléfono";
@@ -405,7 +434,6 @@ if ($_GET["Operadora"] == ""){
                     </div>
                   </div>
                 </div>
-                <?php if ($_GET["Operadora"] == "Entel"): ?>
                   <div class="panel panel-<?php echo $LTEABoxType ?>">
                     <div class="panel-heading">
                       <h4 class="panel-title">
@@ -430,7 +458,6 @@ if ($_GET["Operadora"] == ""){
                       </div>
                     </div>
                   </div>
-                <?php endif; ?>
               </div>
             </div>
             <div class="col-md-4">
@@ -444,7 +471,7 @@ if ($_GET["Operadora"] == ""){
 </div>
 <footer class="footer">
     <div class="container">
-      <p class="text-muted">Verificador de Bandas <a href="about.php">1.0.4</a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
+      <p class="text-muted">Verificador de Bandas <a href="about.php"><?php echo $Version ?></a> Copyright © <?php echo date("Y") ?> Pisapapeles Networks Ltda. </p>
     </div>
   </footer>
 </body>
