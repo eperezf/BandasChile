@@ -10,6 +10,7 @@ session_start();
 
 require_once('classesv2.php');
 require_once('version.php');
+require_once('config.php');
 $Operadora = new Operadora($_GET["Operadora"]);
 $Telefono = new Telefono($_GET["Telefono"]);
 $Comparacion = new Comparacion;
@@ -312,6 +313,14 @@ if ($_GET["Operadora"] == ""){
   die;
 }
 
+$OpQuery = "SELECT `Nombre` FROM `Operadoras`";
+$OpResult = mysqli_query($conn, $OpQuery);
+
+$FullNamePlus = $Telefono->Marca . "+" . str_replace(" ", "+", $Telefono->Modelo);
+if ($Telefono->Variante != ""){
+  $FullNamePlus = $FullNamePlus . "+" . str_replace(" ", "+", $Telefono->Variante);
+}
+
 ?>
 
 <html>
@@ -458,7 +467,26 @@ if ($_GET["Operadora"] == ""){
               </div>
             </div>
             <div class="col-md-4">
-              <img src="img/<?php echo str_replace(" ", "_", $Operadora->Nombre) ?>.png" class="img-responsive center-block" alt="<?php echo $Operadora->Nombre ?>" style="max-height: 150px;">
+              <div class="col-md-12 col-lg-12">
+                <img src="img/<?php echo str_replace(" ", "_", $Operadora->Nombre) ?>.png" class="img-responsive center-block" alt="<?php echo $Operadora->Nombre ?>" style="max-height: 150px;">
+              </div>
+              <div class="col-md-12 col-lg-12">
+                <h4><p class="text-center">Verificar en otra operadora: </p></h4>
+                <form action="result.php" method="get">
+                  <select class="form-control" id="Operadora" name="Operadora">
+                    <?php 
+                      while ($OpRow = mysqli_fetch_array($OpResult)){
+                        echo "<option>" . $OpRow["Nombre"] . "</option>";
+                      }
+                    ?>
+                  </select>
+                  <input type="hidden" id="Telefono" name="Telefono" value="<?php echo $Telefono->NombreCompleto ?>">
+                  </br>
+                  <div class="col-md-12 col-lg-12">
+                    <button type="submit" class="btn btn-warning center-block">Verificar</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
