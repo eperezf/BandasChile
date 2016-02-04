@@ -473,6 +473,7 @@ if ($Telefono->Variante != ""){
               <div class="col-md-12 col-lg-12">
                 <h4><p class="text-center">Verificar en otra operadora: </p></h4>
                 <form action="result.php" method="get">
+                  <input type="hidden" id="Telefono" name="Telefono" value="<?php echo $Telefono->NombreCompleto ?>">
                   <select class="form-control" id="Operadora" name="Operadora">
                     <?php 
                       while ($OpRow = mysqli_fetch_array($OpResult)){
@@ -480,7 +481,6 @@ if ($Telefono->Variante != ""){
                       }
                     ?>
                   </select>
-                  <input type="hidden" id="Telefono" name="Telefono" value="<?php echo $Telefono->NombreCompleto ?>">
                   </br>
                   <div class="col-md-12 col-lg-12">
                     <button type="submit" class="btn btn-warning center-block">Verificar</button>
