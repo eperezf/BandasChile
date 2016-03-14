@@ -282,8 +282,8 @@ else {
 }
 
 if ($Telefono->SAE == "1"){
-    $SAEBoxText = $WarningIcon . " Compatible con SAE"; 
-    $SAEBoxType = "warning";
+    $SAEBoxText = $OKIcon . " Compatible con SAE"; 
+    $SAEBoxType = "Success";
     $SAEResponse = 'es compatible con el Sistema de Alertas de Emergencia.';
   }
   else {
