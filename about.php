@@ -28,14 +28,10 @@ while ($row = mysqli_fetch_array($result)){
   
   <!-- Latest compiled and minified CSS -->
   <!-- Latest compiled and minified JavaScript -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
-  <?php if ($_GET["Branding"] == "True" || $_GET["Branding"] == "Partial"): ?>
-    <link rel="stylesheet" href="/css/entel.min.css">
-  <?php else : ?>
-    <link rel="stylesheet" href="/css/pisapapeles.min.css">
-  <?php endif ?>
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/css/footer.css">
   <style>

@@ -248,7 +248,7 @@ if ($_GET["Operadora"] != "Entel"){
   if ($Telefono->HDVoice == "1"){
     $HDVoiceBoxText = $WarningIcon . " Compatible con Voz HD"; 
     $HDVoiceBoxType = "warning";
-    $HDVoiceResponse = 'es compatible con Voz HD. Servicio exclusivo de Entel. <a href="http://entel.cl/portabilidad">Pórtate aquí</a>';
+    $HDVoiceResponse = 'es compatible con Voz HD. Servicio exclusivo de Entel. Para poder usarlo, <a href="http://entel.cl/portabilidad">Pórtate aquí</a>';
   }
   else {
     $HDVoiceBoxText = $DangerIcon . " No compatible con Voz HD"; 
@@ -261,7 +261,7 @@ else {
   if ($Telefono->LTEA == "1"){
     $LTEABoxText = $OKIcon . " Compatible con LTE-A"; 
     $LTEABoxType = "Success";
-    $LTEAResponse = "es compatible con LTE-Advanced. Servicio exclusivo de Entel.";
+    $LTEAResponse = 'es compatible con LTE-Advanced. Servicio exclusivo de Entel. Para poder usarlo, <a href="http://entel.cl/portabilidad">Pórtate aquí</a>';
   }
   else {
     $LTEABoxText = $DangerIcon . " No compatible con LTE-A"; 
@@ -272,7 +272,7 @@ else {
   if ($Telefono->HDVoice == "1"){
     $HDVoiceBoxText = $OKIcon . " Compatible con Voz HD"; 
     $HDVoiceBoxType = "Success";
-    $HDVoiceResponse = "es compatible con Voz HD. Servicio exclusivo de Entel.";
+    $HDVoiceResponse = 'es compatible con Voz HD. Servicio exclusivo de Entel. Para poder usarlo, <a href="http://entel.cl/portabilidad">Pórtate aquí</a>';
   }
   else {
     $HDVoiceBoxText = $DangerIcon . " No compatible con Voz HD"; 
@@ -280,6 +280,17 @@ else {
     $HDVoiceResponse = "no es compatible con Voz HD. Servicio exclusivo de Entel.";
   };
 }
+
+if ($Telefono->SAE == "1"){
+    $SAEBoxText = $WarningIcon . " Compatible con SAE"; 
+    $SAEBoxType = "warning";
+    $SAEResponse = 'es compatible con el Sistema de Alertas de Emergencia.';
+  }
+  else {
+    $SAEBoxText = $DangerIcon . " No compatible con SAE"; 
+    $SAEBoxType = "danger";
+    $SAEResponse = "no es compatible con el Sistema de Alertas de Emergencia.";
+  };
 
 
 
@@ -331,15 +342,11 @@ if ($Telefono->Variante != ""){
   
   <!-- Latest compiled and minified CSS -->
   <!-- Latest compiled and minified JavaScript -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
   <script src="js/collapse.js" type="text/javascript"></script>
-  <?php if ($_GET["Branding"] == "True" || $_GET["Branding"] == "Partial"): ?>
-    <link rel="stylesheet" href="/css/entel.min.css">
-  <?php else : ?>
-    <link rel="stylesheet" href="/css/pisapapeles.min.css">
-  <?php endif ?>
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/css/footer.css">
   <style>
@@ -364,25 +371,13 @@ if ($Telefono->Variante != ""){
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand navbar-active" href="/index.php">
-        <?php if ($_GET["Branding"] == "True"): ?>
-           <img src="/img/e.png" class="img-responsive">
-        <?php elseif ($_GET["Branding"] == "Partial") : ?>
-           <img src="/img/emasp.png" class="img-responsive">
-        <?php else: ?>
-          <img src="/img/p.png" class="img-responsive">
-        <?php endif; ?>
+        <img src="/img/e.png" class="img-responsive">
       </a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="/index.php">Inicio</a></li>
-        <li><a href="http://pisapapeles.net">Pisapapeles</a></li>
-        <?php if ($_GET["Branding"] == "True"): ?>
-           <li><a href="http://entel.cl">Entel</a></li>
-        <?php elseif ($_GET["Branding"] == "Partial") : ?>
-           <li><a href="http://entel.cl">Entel</a></li>
-        <?php else: ?>
-        <?php endif; ?>       
+        <li><a href="http://entel.cl">Entel</a></li>    
         <li><a href="/about.php">Acerca de</a></li>
       </ul>
     </div>
@@ -464,6 +459,18 @@ if ($Telefono->Variante != ""){
                     <div id="HDVoice" class="panel-collapse collapse">
                       <div class="panel-body">
                         <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> variante <?php echo $Telefono->Variante ?> <?php echo $HDVoiceResponse ?></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-<?php echo $SAEBoxType ?>">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#SAE"><?php echo $SAEBoxText ?><span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
+                      </h4>
+                    </div>
+                    <div id="SAE" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> variante <?php echo $Telefono->Variante ?> <?php echo $SAEResponse ?></p>
                       </div>
                     </div>
                   </div>

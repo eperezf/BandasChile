@@ -28,6 +28,7 @@ class InputPhone {
 	public $LTEAWS = "";
 	public $LTEA = "";
 	public $HDVoice = "";
+	public $SAE = "";
 	public $NombreCompleto = "";
 
 	//Datos de inserción de datos del teléfono y resultados
@@ -121,6 +122,12 @@ class InputPhone {
 		else {
 			$this->HDVoice = "0";
 		}
+		if (isset($_POST["SAE"])){
+			$this->SAE = "1";
+		}
+		else {
+			$this->SAE = "0";
+		}
 
 		//Marca, modelo, variante, nombre completo
 		$this->Marca = $_POST["Marca"];
@@ -159,7 +166,7 @@ class InputPhone {
 			$this->InsertTelefonoID = "NULL";
 		}
 		else {
-			$InsertTelefono = "INSERT INTO `Telefonos` (`Marca`, `Modelo`, `Variante`, `NombreCompleto`, `LinkReview`, `LTEA`, `HDVoice`) VALUES ('" . mysqli_real_escape_string($conn, $this->Marca) . "', '" . mysqli_real_escape_string($conn, $this->Modelo) . "', '" . mysqli_real_escape_string($conn, $this->Variante) . "', '" . mysqli_real_escape_string($conn, $this->NombreCompleto) . "', '" . mysqli_real_escape_string($conn, $this->LinkReview) . "', '" . mysqli_real_escape_string($conn, $this->LTEA) . "', '" . mysqli_real_escape_string($conn, $this->HDVoice) . "')" ;
+			$InsertTelefono = "INSERT INTO `Telefonos` (`Marca`, `Modelo`, `Variante`, `NombreCompleto`, `LinkReview`, `LTEA`, `HDVoice`, `SAE`) VALUES ('" . mysqli_real_escape_string($conn, $this->Marca) . "', '" . mysqli_real_escape_string($conn, $this->Modelo) . "', '" . mysqli_real_escape_string($conn, $this->Variante) . "', '" . mysqli_real_escape_string($conn, $this->NombreCompleto) . "', '" . mysqli_real_escape_string($conn, $this->LinkReview) . "', '" . mysqli_real_escape_string($conn, $this->LTEA) . "', '" . mysqli_real_escape_string($conn, $this->HDVoice) . "', '" . mysqli_real_escape_string($conn, $this->Marca) . "')" ;
 			$Result = mysqli_query($conn, $InsertTelefono);
 			if (! $Result){
 				$this->InsertTelefonoResult = "ERROR";
@@ -538,6 +545,7 @@ class Telefono {
 	public $NombreCompleto;
 	public $LTEA = "FALSE";
 	public $HDVoice = "FALSE";
+	public $SAE = "FALSE";
 
 	//Datos de las bandas del teléfono
 	public $GSM1900 = "FALSE";
@@ -565,6 +573,7 @@ class Telefono {
   		$this->LinkReview = $row["LinkReview"];
   		$this->LTEA = $row["LTEA"];
   		$this->HDVoice = $row["HDVoice"];
+  		$this->SAE = $row["SAE"];
 		};
 		$query = "";
 		$result = "";
@@ -582,6 +591,7 @@ class Telefono {
 	  		$this->LinkReview = $row["LinkReview"];
 	  		$this->LTEA = $row["LTEA"];
 	  		$this->HDVoice = $row["HDVoice"];
+	  		$this->SAE = $row["SAE"];
 			};
 		}
 		$this->NombreCompleto = $this->Marca . " " . $this->Modelo . " " . $this->Variante;

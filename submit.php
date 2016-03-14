@@ -57,6 +57,7 @@ $telefono->InsertBandas();
 <p>------Otros:------</p>
 <p>LTE-Advanced: <?php echo $telefono->LTEA ?></p>
 <p>Voz HD: <?php echo $telefono->HDVoice ?></p>
+<p>Sistema de Alertas de Emergencia (SAE): <?php echo $telefono->SAE ?></p>
 <p>----RESULTADOS----</p>
 <p>Coincidencia en la base de datos: <?php echo $telefono->DuplicateMatch ?></p>
 <p>Estado del agregador de teléfono: <?php echo $telefono->InsertTelefonoResult ?></p>
