@@ -248,7 +248,7 @@ if ($_GET["Operadora"] != "Entel"){
   if ($Telefono->HDVoice == "1"){
     $HDVoiceBoxText = $WarningIcon . " Compatible con Voz HD"; 
     $HDVoiceBoxType = "warning";
-    $HDVoiceResponse = 'es compatible con Voz HD. <b>Servicio exclusivo de Entel. <a href="http://entel.cl/portabilidad">Pórtate aquí</a></b>';
+    $HDVoiceResponse = 'es compatible con Voz HD. Servicio exclusivo de Entel. Para poder usarlo, <a href="http://entel.cl/portabilidad">Pórtate aquí</a>';
   }
   else {
     $HDVoiceBoxText = $DangerIcon . " No compatible con Voz HD"; 
@@ -261,7 +261,7 @@ else {
   if ($Telefono->LTEA == "1"){
     $LTEABoxText = $OKIcon . " Compatible con LTE-A"; 
     $LTEABoxType = "Success";
-    $LTEAResponse = "es compatible con LTE-Advanced. <b>Servicio exclusivo de Entel.</b>";
+    $LTEAResponse = 'es compatible con LTE-Advanced. Servicio exclusivo de Entel. Para poder usarlo, <a href="http://entel.cl/portabilidad">Pórtate aquí</a>';
   }
   else {
     $LTEABoxText = $DangerIcon . " No compatible con LTE-A"; 
@@ -272,7 +272,7 @@ else {
   if ($Telefono->HDVoice == "1"){
     $HDVoiceBoxText = $OKIcon . " Compatible con Voz HD"; 
     $HDVoiceBoxType = "Success";
-    $HDVoiceResponse = "es compatible con Voz HD. <b>Servicio exclusivo de Entel.</b>";
+    $HDVoiceResponse = 'es compatible con Voz HD. Servicio exclusivo de Entel. Para poder usarlo, <a href="http://entel.cl/portabilidad">Pórtate aquí</a>';
   }
   else {
     $HDVoiceBoxText = $DangerIcon . " No compatible con Voz HD"; 
@@ -280,6 +280,17 @@ else {
     $HDVoiceResponse = "no es compatible con Voz HD. <b>Servicio exclusivo de Entel.</b>";
   };
 }
+
+if ($Telefono->SAE == "1"){
+    $SAEBoxText = $WarningIcon . " Compatible con SAE"; 
+    $SAEBoxType = "warning";
+    $SAEResponse = 'es compatible con el Sistema de Alertas de Emergencia.';
+  }
+  else {
+    $SAEBoxText = $DangerIcon . " No compatible con SAE"; 
+    $SAEBoxType = "danger";
+    $SAEResponse = "no es compatible con el Sistema de Alertas de Emergencia.";
+  };
 
 
 
@@ -357,14 +368,13 @@ if ($Telefono->Variante != ""){
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand navbar-active" href="/index.php">
-           <img src="/img/e.png" class="img-responsive">
+        <img src="/img/e.png" class="img-responsive">
       </a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Inicio</a></li>
-        <li><a href="http://entel.cl">Entel</a></li>
-        <li><a href="http://pisapapeles.net">Pisapapeles</a></li>         
+        <li><a href="/index.php">Inicio</a></li>
+        <li><a href="http://entel.cl">Entel</a></li>    
         <li><a href="/about.php">Acerca de</a></li>
       </ul>
     </div>
@@ -452,12 +462,12 @@ if ($Telefono->Variante != ""){
                   <div class="panel panel-<?php echo $SAEBoxType ?>">
                     <div class="panel-heading">
                       <h4 class="panel-title">
-                        <a data-toggle="collapse" href="#SAE"><?php echo $SAEText ?><span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
+                        <a data-toggle="collapse" href="#SAE"><?php echo $SAEBoxText ?><span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
                       </h4>
                     </div>
                     <div id="SAE" class="panel-collapse collapse">
                       <div class="panel-body">
-                        <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> variante <?php echo $Telefono->Variante ?> SAE RESPONSE</p>
+                        <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> variante <?php echo $Telefono->Variante ?> <?php echo $SAEResponse ?></p>
                       </div>
                     </div>
                   </div>

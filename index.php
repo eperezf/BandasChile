@@ -40,14 +40,13 @@ require_once('version.php');
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand navbar-active" href="/index.php">
-           <img src="/img/e.png" class="img-responsive">
+        <img src="/img/e.png" class="img-responsive">
       </a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Inicio</a></li>
-        <li><a href="http://entel.cl">Entel</a></li>
-        <li><a href="http://pisapapeles.net">Pisapapeles</a></li>         
+        <li><a href="http://entel.cl">Entel</a></li>     
         <li><a href="/about.php">Acerca de</a></li>
       </ul>
     </div>
@@ -95,12 +94,6 @@ require_once('version.php');
           <button type="submit" class="btn btn-warning center-block">Verificar</button>
         </div>
       </form>
-    </div>
-    <div class="row">
-      <hr></hr>
-      <div class="col-md-12">
-        <h3><p class="text-center">Un proyecto</h3><img src="http://static.pisapapeles.net/uploads/2014/09/logopisapapeles-copy.png" class="img-responsive center-block"></p>
-      </div>
     </div>
   </div>
   <footer class="footer">

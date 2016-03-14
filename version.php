@@ -1,7 +1,6 @@
 <?php 
 
-
-$Version = "1.0.7"; 
-$Codename = "Credence Clearwater Revival";
+$Version = "1.1.0"; 
+$Codename = "David Bowie";
 
 ?>
