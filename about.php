@@ -29,7 +29,9 @@ while ($row = mysqli_fetch_array($result)){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
+  <script src="js/collapse.js" type="text/javascript"></script>
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/entel.css">
   <link rel="stylesheet" href="/css/footer.css">
   <style>
     body {

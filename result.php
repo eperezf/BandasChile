@@ -345,6 +345,7 @@ if ($Telefono->Variante != ""){
   <script src="js/bootstrap3-typeahead.min.js" type="text/javascript"></script>
   <script src="js/collapse.js" type="text/javascript"></script>
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/entel.css">
   <link rel="stylesheet" href="/css/footer.css">
   <style>
     body {
@@ -390,7 +391,7 @@ if ($Telefono->Variante != ""){
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="col-md-4">
-              <p><img src="<?php echo '/img/phones/' . $LinkFoto . '.png' ?>" class="img-responsive" onError="this.onerror=null;this.src='http://placehold.it/600x800';"></p>
+              <p><img src="<?php echo '/img/phones/' . $LinkFoto . '.png' ?>" class="img-responsive" onError="this.onerror=null;this.src='https://placehold.it/600x800';"></p>
               <h3><p class="text-center"><?php echo $Telefono->NombreCompleto ?></p></h3>
               <?php if ($Telefono->LinkReview != ""){echo '<h2><p class="text-center"><a href="http://pisapapeles.net/' . $Telefono->LinkReview . '" class="btn btn-warning">Leer review</a></p></h2>';}; ?>
             </div>
