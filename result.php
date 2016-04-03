@@ -19,7 +19,7 @@ $GSMList = "";
 $UMTSList = "";
 $LTEList = "";
 
-$LinkFoto = $Telefono->Marca . str_replace(" ", "", $Telefono->Modelo);
+$LinkFoto = str_replace(" ", "", $Telefono->Marca) . str_replace(" ", "", $Telefono->Modelo);
 
 $Operadora->GetBandas();
 $GSM1900 = $Comparacion->ProcessBand($Operadora->GSM1900, $Telefono->GSM1900, "GSM1900");
@@ -237,7 +237,7 @@ if ($_GET["Operadora"] != "Entel"){
   if ($Telefono->LTEA == "1"){
     $LTEABoxText = $WarningIcon . " Compatible con LTE-A"; 
     $LTEABoxType = "warning";
-    $LTEAResponse = 'es compatible con LTE-Advanced. <b>Servicio exclusivo de Entel. <a href="http://entel.cl/portabilidad">Pórtate aquí</a></b>';
+    $LTEAResponse = 'es compatible con LTE-Advanced. <b>Servicio exclusivo de Entel. Para poder usarlo, <a href="http://entel.cl/portabilidad">Pórtate aquí</a></b>';
   }
   else {
     $LTEABoxText = $DangerIcon . " No compatible con LTE-A"; 
@@ -248,7 +248,7 @@ if ($_GET["Operadora"] != "Entel"){
   if ($Telefono->HDVoice == "1"){
     $HDVoiceBoxText = $WarningIcon . " Compatible con Voz HD"; 
     $HDVoiceBoxType = "warning";
-    $HDVoiceResponse = 'es compatible con Voz HD. Servicio exclusivo de Entel. Para poder usarlo, <a href="http://entel.cl/portabilidad">Pórtate aquí</a>';
+    $HDVoiceResponse = 'es compatible con Voz HD. <b>Servicio exclusivo de Entel. Para poder usarlo, <a href="http://entel.cl/portabilidad">Pórtate aquí</a></b>';
   }
   else {
     $HDVoiceBoxText = $DangerIcon . " No compatible con Voz HD"; 
@@ -261,7 +261,7 @@ else {
   if ($Telefono->LTEA == "1"){
     $LTEABoxText = $OKIcon . " Compatible con LTE-A"; 
     $LTEABoxType = "Success";
-    $LTEAResponse = 'es compatible con LTE-Advanced. Servicio exclusivo de Entel. Para poder usarlo, <a href="http://entel.cl/portabilidad">Pórtate aquí</a>';
+    $LTEAResponse = 'es compatible con LTE-Advanced. <b>Servicio exclusivo de Entel. Para poder usarlo, <a href="http://entel.cl/portabilidad">Pórtate aquí</a></b>';
   }
   else {
     $LTEABoxText = $DangerIcon . " No compatible con LTE-A"; 
@@ -272,12 +272,12 @@ else {
   if ($Telefono->HDVoice == "1"){
     $HDVoiceBoxText = $OKIcon . " Compatible con Voz HD"; 
     $HDVoiceBoxType = "Success";
-    $HDVoiceResponse = 'es compatible con Voz HD. Servicio exclusivo de Entel. Para poder usarlo, <a href="http://entel.cl/portabilidad">Pórtate aquí</a>';
+    $HDVoiceResponse = 'es compatible con Voz HD. <b>Servicio exclusivo de Entel. Para poder usarlo, <a href="http://entel.cl/portabilidad">Pórtate aquí</a></b>';
   }
   else {
     $HDVoiceBoxText = $DangerIcon . " No compatible con Voz HD"; 
     $HDVoiceBoxType = "danger";
-    $HDVoiceResponse = "no es compatible con Voz HD. <b>Servicio exclusivo de Entel.</b>";
+    $HDVoiceResponse = 'no es compatible con Voz HD. <b>Servicio exclusivo de Entel.</b>';
   };
 }
 
@@ -391,7 +391,7 @@ if ($Telefono->Variante != ""){
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="col-md-4">
-              <p><img src="<?php echo '/img/phones/' . $LinkFoto . '.png' ?>" class="img-responsive" onError="this.onerror=null;this.src='https://placehold.it/600x800';"></p>
+              <p><img src="<?php echo '/img/phones/' . $LinkFoto . '.png' ?>" class="img-responsive" onError="this.onerror=null;this.src='/img/nofoto.png';"></p>
               <h3><p class="text-center"><?php echo $Telefono->NombreCompleto ?></p></h3>
               <?php if ($Telefono->LinkReview != ""){echo '<h2><p class="text-center"><a href="http://pisapapeles.net/' . $Telefono->LinkReview . '" class="btn btn-warning">Leer review</a></p></h2>';}; ?>
             </div>
@@ -444,7 +444,7 @@ if ($Telefono->Variante != ""){
                     </div>
                     <div id="LTEA" class="panel-collapse collapse">
                       <div class="panel-body">
-                        <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> variante <?php echo $Telefono->Variante ?> <?php echo $LTEAResponse ?></p>
+                        <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> <?php if ($Telefono->Variante != ""){ echo "variante";} ?> <?php echo $Telefono->Variante ?> <?php echo $LTEAResponse ?></p>
                       </div>
                     </div>
                   </div>
@@ -456,7 +456,7 @@ if ($Telefono->Variante != ""){
                     </div>
                     <div id="HDVoice" class="panel-collapse collapse">
                       <div class="panel-body">
-                        <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> variante <?php echo $Telefono->Variante ?> <?php echo $HDVoiceResponse ?></p>
+                        <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> <?php if ($Telefono->Variante != ""){ echo "variante";} ?> <?php echo $Telefono->Variante ?> <?php echo $HDVoiceResponse ?></p>
                       </div>
                     </div>
                   </div>
@@ -468,7 +468,7 @@ if ($Telefono->Variante != ""){
                     </div>
                     <div id="SAE" class="panel-collapse collapse">
                       <div class="panel-body">
-                        <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> variante <?php echo $Telefono->Variante ?> <?php echo $SAEResponse ?></p>
+                        <p>El <?php echo $Telefono->Marca ?> <?php echo $Telefono->Modelo ?> <?php if ($Telefono->Variante != ""){ echo "variante";} ?> <?php echo $Telefono->Variante ?> <?php echo $SAEResponse ?></p>
                       </div>
                     </div>
                   </div>

@@ -74,7 +74,7 @@ $result = mysqli_query($conn, $query);
 	<!--Fin Navbar-->
 	<div class="container">
 		<div class="row">
-			<legend>LISTER SYSTEM ALPHA V0.1</legend>
+			<legend>LISTER SYSTEM ALPHA V0.3</legend>
 		</div>
 		<div class="row">
 			<table class="table table-striped">
@@ -86,10 +86,12 @@ $result = mysqli_query($conn, $query);
 					<td>Acción</td>
 				</tr>
 				<?php while ($row = mysqli_fetch_array($result)): ?>
+				<?php $linkplus = str_replace(" ", "", $row["Marca"]) . "+" . str_replace(" ", "+", $row["Modelo"]) . "+" . str_replace(" ", "", $row["Variante"]);
+				?>
 					<tr>
 						<td><?php echo $row["idTelefonos"] ?></td>
 						<td><?php echo $row["Marca"] ?></td>
-						<td><?php echo $row["Modelo"] ?></td>
+						<td><a href="result.php?Telefono=<?php echo $linkplus ?>&Operadora=Entel"><?php echo $row["Modelo"] ?></a></td>
 						<td><?php echo $row["Variante"] ?></td>
 						<td><button onclick="delete<?php echo $row['idTelefonos']; ?>()">ELIMINAR</button></td>
 					</tr>
